@@ -1,0 +1,5 @@
+.NavBar {
+    display: flex;
+    padding: 3rem;
+    background: var(--mainYellow);
+}
