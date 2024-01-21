@@ -1,5 +1,7 @@
 :root {
     --mainYellow: #ffff00;
+    --gray-200: #ccc;
+    --redError: #e91515;
 }
 
 * {
