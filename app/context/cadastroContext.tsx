@@ -1,5 +1,5 @@
 "use client";
-import {
+import React, {
   createContext,
   useState,
   useRef,
@@ -9,7 +9,11 @@ import {
 } from "react";
 
 interface CadastroContextProps {
-  refGenerallyInputs: React.RefObject<HTMLInputElement>;
+  refInputName: React.RefObject<HTMLInputElement>;
+  refInputCpf: React.RefObject<HTMLInputElement>;
+  refInputEmail: React.RefObject<HTMLInputElement>;
+  refInputBirthday: React.RefObject<HTMLInputElement>;
+  refInputPhone: React.RefObject<HTMLInputElement>;
   isNameErrorEmpty: boolean | HTMLInputElement;
   isCpfErrorEmpty: boolean | HTMLInputElement;
   isEmailErrorEmpty: boolean | HTMLInputElement;
@@ -20,7 +24,8 @@ interface CadastroContextProps {
   setEmailErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
   setBirthdayErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
   setPhoneErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
-  ValidateEmptyInput: () => void;
+  ValidateEmptyInputName: () => void;
+  ValidateEmptyInputCpf: () => void;
 }
 
 export const CadastroContext = createContext({} as CadastroContextProps);
@@ -30,7 +35,11 @@ export const CadastroProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const refGenerallyInputs = useRef<HTMLInputElement | null>(null);
+  const refInputName = useRef<HTMLInputElement | null>(null);
+  const refInputCpf = useRef<HTMLInputElement | null>(null);
+  const refInputEmail = useRef<HTMLInputElement | null>(null);
+  const refInputBirthday = useRef<HTMLInputElement | null>(null);
+  const refInputPhone = useRef<HTMLInputElement | null>(null);
 
   const [isCpfErrorEmpty, setCpfErrorEmpty] = useState<
     HTMLInputElement | boolean
@@ -49,18 +58,30 @@ export const CadastroProvider = ({
     HTMLInputElement | boolean
   >(false);
 
-  function ValidateEmptyInput() {
-    const value = refGenerallyInputs.current?.value.trim();
+  function ValidateEmptyInputName() {
+    const value = refInputName.current?.value.trim();
 
     if (!value || value.trim() === "") {
       setNameErrorEmpty(true);
     }
   }
 
+  function ValidateEmptyInputCpf() {
+    const value = refInputCpf.current?.value.trim();
+
+    if (!value || value.trim() === "") {
+      setCpfErrorEmpty(true);
+    }
+  }
+
   return (
     <CadastroContext.Provider
       value={{
-        refGenerallyInputs,
+        refInputName,
+        refInputCpf,
+        refInputEmail,
+        refInputBirthday,
+        refInputPhone,
         isCpfErrorEmpty,
         isEmailErrorEmpty,
         isBirthdayErrorEmpty,
@@ -71,7 +92,8 @@ export const CadastroProvider = ({
         setEmailErrorEmpty,
         setBirthdayErrorEmpty,
         setPhoneErrorEmpty,
-        ValidateEmptyInput,
+        ValidateEmptyInputName,
+        ValidateEmptyInputCpf,
       }}
     >
       {children}
