@@ -1,13 +1,25 @@
 "use client";
-import { createContext, useState, useRef, useContext } from "react";
+import {
+  createContext,
+  useState,
+  useRef,
+  useContext,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 interface CadastroContextProps {
   refGenerallyInputs: React.RefObject<HTMLInputElement>;
+  isNameErrorEmpty: boolean | HTMLInputElement;
   isCpfErrorEmpty: boolean | HTMLInputElement;
   isEmailErrorEmpty: boolean | HTMLInputElement;
   isBirthdayErrorEmpty: boolean | HTMLInputElement;
   isPhoneErrorEmpty: boolean | HTMLInputElement;
-  isNameErrorEmpty: boolean | HTMLInputElement;
+  setNameErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  setCpfErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  setEmailErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  setBirthdayErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  setPhoneErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
   ValidateEmptyInput: () => void;
 }
 
@@ -54,6 +66,11 @@ export const CadastroProvider = ({
         isBirthdayErrorEmpty,
         isPhoneErrorEmpty,
         isNameErrorEmpty,
+        setNameErrorEmpty,
+        setCpfErrorEmpty,
+        setEmailErrorEmpty,
+        setBirthdayErrorEmpty,
+        setPhoneErrorEmpty,
         ValidateEmptyInput,
       }}
     >
