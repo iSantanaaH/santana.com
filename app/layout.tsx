@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { CadastroProvider } from "./context/cadastroContext";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,9 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br">
-      <link rel="icon" href="/Images/logo.svg" />
-      <body className={inter.className}>{children}</body>
-    </html>
+    <CadastroProvider>
+      <html lang="pt-br">
+        <link rel="icon" href="/Images/logo.svg" />
+        <body className={inter.className}>{children}</body>
+      </html>
+    </CadastroProvider>
   );
 }
