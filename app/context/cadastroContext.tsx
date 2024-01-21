@@ -26,6 +26,9 @@ interface CadastroContextProps {
   setPhoneErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
   ValidateEmptyInputName: () => void;
   ValidateEmptyInputCpf: () => void;
+  ValidateEmptyInputEmail: () => void;
+  ValidateEmptyInputBirthday: () => void;
+  ValidateEmptyInputPhone: () => void;
 }
 
 export const CadastroContext = createContext({} as CadastroContextProps);
@@ -74,6 +77,30 @@ export const CadastroProvider = ({
     }
   }
 
+  function ValidateEmptyInputEmail() {
+    const value = refInputEmail.current?.value.trim();
+
+    if (!value || value.trim() === "") {
+      setEmailErrorEmpty(true);
+    }
+  }
+
+  function ValidateEmptyInputBirthday() {
+    const value = refInputBirthday.current?.value.trim();
+
+    if (!value || value.trim() === "") {
+      setBirthdayErrorEmpty(true);
+    }
+  }
+
+  function ValidateEmptyInputPhone() {
+    const value = refInputPhone.current?.value.trim();
+
+    if (!value || value.trim() === "") {
+      setPhoneErrorEmpty(true);
+    }
+  }
+
   return (
     <CadastroContext.Provider
       value={{
@@ -94,6 +121,9 @@ export const CadastroProvider = ({
         setPhoneErrorEmpty,
         ValidateEmptyInputName,
         ValidateEmptyInputCpf,
+        ValidateEmptyInputEmail,
+        ValidateEmptyInputBirthday,
+        ValidateEmptyInputPhone,
       }}
     >
       {children}
