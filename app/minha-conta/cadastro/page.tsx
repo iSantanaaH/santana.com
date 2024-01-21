@@ -6,13 +6,20 @@ import { useCadatroContext } from "@/app/context/cadastroContext";
 
 export default function ResgiterPage() {
   const {
-    refGenerallyInputs,
+    refInputName,
+    refInputCpf,
     isCpfErrorEmpty,
     isEmailErrorEmpty,
     isBirthdayErrorEmpty,
     isPhoneErrorEmpty,
     isNameErrorEmpty,
-    ValidateEmptyInput,
+    setNameErrorEmpty,
+    setCpfErrorEmpty,
+    setEmailErrorEmpty,
+    setBirthdayErrorEmpty,
+    setPhoneErrorEmpty,
+    ValidateEmptyInputName,
+    ValidateEmptyInputCpf,
   } = useCadatroContext();
 
   return (
@@ -50,13 +57,13 @@ export default function ResgiterPage() {
                 className={`${styles.InputNome} ${
                   isNameErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                ref={refGenerallyInputs}
-                onBlur={ValidateEmptyInput}
-                // onChange={() => setNameErrorEmpty(false)
+                ref={refInputName}
+                onBlur={ValidateEmptyInputName}
+                onChange={() => setNameErrorEmpty(false)}
               />
               {isNameErrorEmpty && (
                 <span className={styles.SpanErrorRender}>
-                  *Campo obrigatório
+                  * Campo obrigatório
                 </span>
               )}
             </div>
@@ -69,9 +76,18 @@ export default function ResgiterPage() {
                 name="cpf"
                 required
                 placeholder="___.___.___-__"
-                className={styles.InputCPF}
-                onBlur={ValidateEmptyInput}
+                className={`${styles.InputCPF} ${
+                  isCpfErrorEmpty ? styles.ErrorInput : ""
+                }`}
+                onBlur={ValidateEmptyInputCpf}
+                onChange={() => setCpfErrorEmpty(false)}
+                ref={refInputCpf}
               />
+              {isCpfErrorEmpty && (
+                <span className={styles.SpanErrorRender}>
+                  * Campo obrigatório
+                </span>
+              )}
             </div>
             <div className={styles.ContainerOptions}>
               <label htmlFor="email">Email</label>
@@ -82,7 +98,8 @@ export default function ResgiterPage() {
                 required
                 placeholder="Digite seu email"
                 className={styles.InputEmail}
-                onBlur={ValidateEmptyInput}
+                // onBlur={ValidateEmptyInput}
+                onChange={() => setEmailErrorEmpty(false)}
               />
             </div>
             <div className={styles.ContentGender}>
@@ -107,7 +124,8 @@ export default function ResgiterPage() {
                 required
                 placeholder="__/__/____"
                 className={styles.InputBirthday}
-                onBlur={ValidateEmptyInput}
+                // onBlur={ValidateEmptyInput}
+                onChange={() => setBirthdayErrorEmpty(false)}
               />
             </div>
             <div className={styles.ContainerOptions}>
@@ -119,7 +137,8 @@ export default function ResgiterPage() {
                 required
                 placeholder="(__) _____-____"
                 className={styles.InputPhone}
-                onBlur={ValidateEmptyInput}
+                // onBlur={ValidateEmptyInput}
+                onChange={() => setPhoneErrorEmpty(false)}
               />
             </div>
             <div>
