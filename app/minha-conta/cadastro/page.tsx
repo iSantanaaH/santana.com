@@ -6,17 +6,18 @@ import { useRef, useState } from "react";
 export default function ResgiterPage() {
   const refInputName = useRef<HTMLInputElement | null>(null);
 
-  const [isNameErrorEmpty, SetNameErrorEmpty] = useState<
-    HTMLDivElement | boolean
+  const [isNameErrorEmpty, setNameErrorEmpty] = useState<
+    HTMLInputElement | boolean
+  >(false);
+  const [isCpfErrorEmpty, setCpfErrorEmpty] = useState<
+    HTMLInputElement | boolean
   >(false);
 
   function ValidateEmptyInput() {
     const value = refInputName.current?.value.trim();
 
     if (!value || value.trim() === "") {
-      SetNameErrorEmpty(true);
-    } else {
-      console.log("O campo foi preenchido");
+      setNameErrorEmpty(true);
     }
   }
 
@@ -57,7 +58,7 @@ export default function ResgiterPage() {
                   }`}
                   ref={refInputName}
                   onBlur={ValidateEmptyInput}
-                  onChange={() => SetNameErrorEmpty(false)}
+                  onChange={() => setNameErrorEmpty(false)}
                 />
                 {isNameErrorEmpty && (
                   <span className={styles.SpanErrorRender}>
