@@ -19,7 +19,6 @@ export const CadastroProvider = ({
   children: React.ReactNode;
 }) => {
   const refGenerallyInputs = useRef<HTMLInputElement | null>(null);
-  console.log("Provider iniciado");
 
   const [isCpfErrorEmpty, setCpfErrorEmpty] = useState<
     HTMLInputElement | boolean
