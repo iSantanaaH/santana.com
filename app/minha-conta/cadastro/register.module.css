@@ -88,6 +88,14 @@
   font-size: 1.1rem;
 }
 
+.MainContainerLoging button {
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 5rem;
+  outline: none;
+  border: none;
+}
+
 .ContentFormLogin form input {
   padding: 1rem;
   border-radius: 1rem;
