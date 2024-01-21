@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
-import { CadastroProvider } from "./context/cadastroContext";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <CadastroProvider>
-      <html lang="pt-br">
-        <link rel="icon" href="/Images/logo.svg" />
-        <body className={inter.className}>{children}</body>
-      </html>
-    </CadastroProvider>
+    <html suppressHydrationWarning lang="pt-br">
+      <link rel="icon" href="/Images/logo.svg" />
+      <body className={inter.className}>
+        <Providers>
+          <main>{children}</main>
+        </Providers>
+      </body>
+    </html>
   );
 }
