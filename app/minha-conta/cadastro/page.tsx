@@ -8,6 +8,9 @@ export default function ResgiterPage() {
   const {
     refInputName,
     refInputCpf,
+    refInputEmail,
+    refInputBirthday,
+    refInputPhone,
     isCpfErrorEmpty,
     isEmailErrorEmpty,
     isBirthdayErrorEmpty,
@@ -20,6 +23,9 @@ export default function ResgiterPage() {
     setPhoneErrorEmpty,
     ValidateEmptyInputName,
     ValidateEmptyInputCpf,
+    ValidateEmptyInputEmail,
+    ValidateEmptyInputBirthday,
+    ValidateEmptyInputPhone,
   } = useCadatroContext();
 
   return (
@@ -57,9 +63,9 @@ export default function ResgiterPage() {
                 className={`${styles.InputNome} ${
                   isNameErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                ref={refInputName}
                 onBlur={ValidateEmptyInputName}
                 onChange={() => setNameErrorEmpty(false)}
+                ref={refInputName}
               />
               {isNameErrorEmpty && (
                 <span className={styles.SpanErrorRender}>
@@ -97,10 +103,18 @@ export default function ResgiterPage() {
                 name="email"
                 required
                 placeholder="Digite seu email"
-                className={styles.InputEmail}
-                // onBlur={ValidateEmptyInput}
+                className={`${styles.InputEmail} ${
+                  isEmailErrorEmpty ? styles.ErrorInput : ""
+                }`}
+                onBlur={ValidateEmptyInputEmail}
                 onChange={() => setEmailErrorEmpty(false)}
+                ref={refInputEmail}
               />
+              {isEmailErrorEmpty && (
+                <span className={styles.SpanErrorRender}>
+                  * Campo obrigatório
+                </span>
+              )}
             </div>
             <div className={styles.ContentGender}>
               <input type="radio" id="sex-m" name="sex" value={"Masculino"} />
@@ -123,10 +137,18 @@ export default function ResgiterPage() {
                 name="birthday"
                 required
                 placeholder="__/__/____"
-                className={styles.InputBirthday}
-                // onBlur={ValidateEmptyInput}
+                className={`${styles.InputBirthday} ${
+                  isBirthdayErrorEmpty ? styles.ErrorInput : ""
+                }`}
+                onBlur={ValidateEmptyInputBirthday}
                 onChange={() => setBirthdayErrorEmpty(false)}
+                ref={refInputBirthday}
               />
+              {isBirthdayErrorEmpty && (
+                <span className={styles.SpanErrorRender}>
+                  * Campo obrigatório
+                </span>
+              )}
             </div>
             <div className={styles.ContainerOptions}>
               <label htmlFor="phone">Telefone</label>
@@ -136,10 +158,18 @@ export default function ResgiterPage() {
                 name="phone"
                 required
                 placeholder="(__) _____-____"
-                className={styles.InputPhone}
-                // onBlur={ValidateEmptyInput}
+                className={`${styles.InputPhone} ${
+                  isPhoneErrorEmpty ? styles.ErrorInput : ""
+                }`}
+                onBlur={ValidateEmptyInputPhone}
                 onChange={() => setPhoneErrorEmpty(false)}
+                ref={refInputPhone}
               />
+              {isPhoneErrorEmpty && (
+                <span className={styles.SpanErrorRender}>
+                  * Campo obrigatório
+                </span>
+              )}
             </div>
             <div>
               <button type="submit">Criar cadastro</button>
