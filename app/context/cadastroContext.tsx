@@ -7,6 +7,7 @@ import React, {
   Dispatch,
   SetStateAction,
 } from "react";
+import axios from "axios";
 
 interface CadastroContextProps {
   refInputName: React.RefObject<HTMLInputElement>;
@@ -29,6 +30,7 @@ interface CadastroContextProps {
   ValidateEmptyInputEmail: () => void;
   ValidateEmptyInputBirthday: () => void;
   ValidateEmptyInputPhone: () => void;
+  handleSubmit: () => void;
 }
 
 export const CadastroContext = createContext({} as CadastroContextProps);
@@ -101,6 +103,36 @@ export const CadastroProvider = ({
     }
   }
 
+  async function handleSubmit() {
+    ValidateEmptyInputName();
+    ValidateEmptyInputCpf();
+    ValidateEmptyInputEmail();
+    ValidateEmptyInputBirthday();
+    ValidateEmptyInputPhone();
+
+    if (
+      !isNameErrorEmpty &&
+      !isCpfErrorEmpty &&
+      !isEmailErrorEmpty &&
+      !isBirthdayErrorEmpty &&
+      !isPhoneErrorEmpty
+    ) {
+      try {
+        const response = await axios.post(
+          "http://localhost:3333/minha-conta/cadastrar"
+        );
+
+        if (response.status === 200) {
+          console.log("Formulário enviado com sucesso!");
+        } else {
+          console.log(`Erro ao enviar o formulário ${response.status}`);
+        }
+      } catch (error: any) {
+        console.error(error.message);
+      }
+    }
+  }
+
   return (
     <CadastroContext.Provider
       value={{
@@ -124,6 +156,7 @@ export const CadastroProvider = ({
         ValidateEmptyInputEmail,
         ValidateEmptyInputBirthday,
         ValidateEmptyInputPhone,
+        handleSubmit,
       }}
     >
       {children}
