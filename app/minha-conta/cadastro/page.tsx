@@ -26,6 +26,7 @@ export default function ResgiterPage() {
     ValidateEmptyInputEmail,
     ValidateEmptyInputBirthday,
     ValidateEmptyInputPhone,
+    handleSubmit,
   } = useCadatroContext();
 
   return (
@@ -51,7 +52,7 @@ export default function ResgiterPage() {
         </article>
 
         <div className={styles.ContentFormLogin}>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className={styles.ContainerOptions}>
               <label htmlFor="name">Nome completo</label>
               <input
