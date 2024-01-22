@@ -64,11 +64,11 @@
 }
 
 .ContainerOptions .InputBirthday {
-    width: 8.5rem;
+  width: 8.5rem;
 }
 
 .ContainerOptions .InputPhone {
-    width: 8rem;
+  width: 8rem;
 }
 
 .ContentFormLogin form .ErrorInput {
@@ -94,6 +94,22 @@
   margin-bottom: 5rem;
   outline: none;
   border: none;
+  background: linear-gradient(
+    to bottom right,
+    var(--button500),
+    var(--button600)
+  );
+  color: var(--whiteFull);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.MainContainerLoging button[type="submit"]:hover {
+  background: linear-gradient(
+    to bottom right,
+    var(--button700),
+    var(--button600)
+  );
 }
 
 .ContentFormLogin form input {
