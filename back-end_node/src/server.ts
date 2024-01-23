@@ -1,5 +1,5 @@
 // Importações principais.
-require("dotenv").config({ path: __dirname+"/.env" });
+require("dotenv").config({ path: __dirname + "/.env" });
 import express from "express";
 import cors from "cors";
 
@@ -10,10 +10,10 @@ const port = process.env.PORT;
 // Uses principais da aplicação.
 app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 // Importações das Rotas.
-import homeRouter from './routes/homeRouter';
+import homeRouter from "./routes/homeRouter";
 import createUserRouter from "./routes/users/createUserRouter";
 
 // Redirecionamento das Rotas.
