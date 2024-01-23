@@ -6,6 +6,7 @@ import { useCadatroContext } from "@/app/context/cadastroContext";
 
 export default function ResgiterPage() {
   const {
+    refFormRegister,
     refInputName,
     refInputCpf,
     refInputEmail,
@@ -52,7 +53,7 @@ export default function ResgiterPage() {
         </article>
 
         <div className={styles.ContentFormLogin}>
-          <form onSubmit={handleSubmit}>
+          <form ref={refFormRegister} onSubmit={handleSubmit}>
             <div className={styles.ContainerOptions}>
               <label htmlFor="name">Nome completo</label>
               <input
@@ -81,20 +82,19 @@ export default function ResgiterPage() {
                 type="text"
                 id="cpf"
                 name="cpf"
+                maxLength={11}
                 required
                 placeholder="___.___.___-__"
                 className={`${styles.InputCPF} ${
                   isCpfErrorEmpty ? styles.ErrorInput : ""
                 }`}
                 onBlur={ValidateEmptyInputCpf}
-                onChange={() => setCpfErrorEmpty(false)}
+                onChange={() => setCpfErrorEmpty("")}
                 ref={refInputCpf}
               />
-              {isCpfErrorEmpty && (
-                <span className={styles.SpanErrorRender}>
-                  * Campo obrigatório
-                </span>
-              )}
+              <span className={styles.SpanErrorRender}>
+                {isCpfErrorEmpty as string}
+              </span>
             </div>
             <div className={styles.ContainerOptions}>
               <label htmlFor="email">Email</label>
