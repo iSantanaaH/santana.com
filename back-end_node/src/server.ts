@@ -1,11 +1,12 @@
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
+require("dotenv").config();
 import express from "express";
 import cors from "cors";
 
 
 const app = express();
-const PORT = process.env.PORT;
+const port = process.env.PORT;
 
 app.use(express.json());
 app.use(cors());
@@ -17,6 +18,6 @@ import homeRouter from './routes/homeRouter';
 //Uso das Rotas
 app.use("/", homeRouter);
 
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado em ${new Date()} na porta ${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor iniciado em ${new Date()} na porta ${port}`);
 });
