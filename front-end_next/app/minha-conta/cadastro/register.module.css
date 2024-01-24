@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
+  padding-bottom: 5rem;
 }
 
 .ContentImageBackground {
@@ -22,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin: 5rem auto;
+  margin: 3rem auto;
   gap: 0.7rem;
 }
 
@@ -41,18 +42,26 @@
   grid-column: 2;
 }
 
+.ContentFormLogin {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .ContentFormLogin form {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  margin: 0 auto;
-  gap: 1.5rem;
 }
 
 .ContentFormLogin .ContainerOptions {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.ContainerOptions .InputName {
+  width: 25rem;
 }
 
 .ContainerOptions .InputCPF {
@@ -77,21 +86,31 @@
 
 .ContentFormLogin form .SpanErrorRender {
   color: var(--redError);
+  margin: -0.5rem 0 1rem;
 }
 
 .ContentGender {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
 }
 
 .ContentGender input {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.ContainerButton p {
+  width: 24rem;
+  margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
-.MainContainerLoging button {
+.ContainerButton button {
   padding: 1rem;
   border-radius: 1rem;
-  margin-bottom: 5rem;
+  width: 100%;
   outline: none;
   border: none;
   background: linear-gradient(
@@ -104,7 +123,17 @@
   cursor: pointer;
 }
 
-.MainContainerLoging button[type="submit"]:hover {
+.ContainerButton button span {
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+}
+
+.ContainerButton .LinkPolitic {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ContainerButton button[type="submit"]:hover {
   background: linear-gradient(
     to bottom right,
     var(--button700),
@@ -118,8 +147,4 @@
   border: 0.1rem solid var(--gray-200);
   outline: none;
   font-size: 1rem;
-}
-
-.ContentFormLogin form label {
-  text-align: left;
 }
