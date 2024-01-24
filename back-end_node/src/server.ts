@@ -22,5 +22,5 @@ app.use("/minhaconta/cadastro", createUserRouter);
 
 // Listen da aplicação.
 app.listen(port, () => {
-  console.log(`Servidor iniciado em ${new Date()} na porta ${port}`);
+  console.log(`Servidor iniciado em ${new Date()}`);
 });
