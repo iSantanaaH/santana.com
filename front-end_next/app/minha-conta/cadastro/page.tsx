@@ -131,9 +131,10 @@ export default function ResgiterPage() {
             <div className={styles.ContainerOptions}>
               <label htmlFor="birthday">Data de nascimento</label>
               <input
-                type="date"
+                type="text"
                 id="birthday"
                 name="birthday"
+                maxLength={8}
                 required
                 placeholder="__/__/____"
                 className={`${styles.InputBirthday} ${
