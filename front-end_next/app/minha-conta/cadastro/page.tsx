@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./register.module.css";
 
 import { useCadatroContext } from "@/app/context/cadastroContext";
+import Link from "next/link";
 
 export default function ResgiterPage() {
   const {
@@ -62,7 +63,7 @@ export default function ResgiterPage() {
                 name="name"
                 required
                 placeholder="Nome"
-                className={`${styles.InputNome} ${
+                className={`${styles.InputName} ${
                   isNameErrorEmpty ? styles.ErrorInput : ""
                 }`}
                 onBlur={ValidateEmptyInputName}
@@ -165,8 +166,16 @@ export default function ResgiterPage() {
                 {isPhoneErrorEmpty as string}
               </span>
             </div>
-            <div>
-              <button type="submit">Criar cadastro</button>
+            <div className={styles.ContainerButton}>
+              <p>
+                Ao criar seu cadastro, você concorda com a nossa{" "}
+                <Link className={styles.LinkPolitic} href={""}>
+                  Política de Privacidade
+                </Link>{" "}
+              </p>
+              <button type="submit">
+                <span>Criar cadastro</span>
+              </button>
             </div>
           </form>
         </div>
