@@ -75,9 +75,13 @@ export const CadastroProvider = ({
   }
 
   function FormatCpf(cpf: string): string {
+    let valueInputCpf = refInputCpf.current?.value.trim();
     const cleanedCpf = cpf.replace(/\D/g, "");
 
-    return cleanedCpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    return (valueInputCpf = cleanedCpf.replace(
+      /(\d{3})(\d{3})(\d{3})(\d{2})/,
+      "$1.$2.$3-$4"
+    ));
   }
 
   function ValidateEmptyInputCpf() {
