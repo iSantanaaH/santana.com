@@ -66,14 +66,12 @@ export default function ResgiterPage() {
                   isNameErrorEmpty ? styles.ErrorInput : ""
                 }`}
                 onBlur={ValidateEmptyInputName}
-                onChange={() => setNameErrorEmpty(false)}
+                onChange={() => setNameErrorEmpty("")}
                 ref={refInputName}
               />
-              {isNameErrorEmpty && (
-                <span className={styles.SpanErrorRender}>
-                  * Campo obrigatório
-                </span>
-              )}
+              <span className={styles.SpanErrorRender}>
+                {isNameErrorEmpty as string}
+              </span>
             </div>
 
             <div className={styles.ContainerOptions}>
@@ -163,14 +161,12 @@ export default function ResgiterPage() {
                   isPhoneErrorEmpty ? styles.ErrorInput : ""
                 }`}
                 onBlur={ValidateEmptyInputPhone}
-                onChange={() => setPhoneErrorEmpty(false)}
+                onChange={() => setPhoneErrorEmpty("")}
                 ref={refInputPhone}
               />
-              {isPhoneErrorEmpty && (
-                <span className={styles.SpanErrorRender}>
-                  * Campo obrigatório
-                </span>
-              )}
+              <span className={styles.SpanErrorRender}>
+                {isPhoneErrorEmpty as string}
+              </span>
             </div>
             <div>
               <button type="submit">Criar cadastro</button>
