@@ -17,16 +17,16 @@ interface CadastroContextProps {
   refInputEmail: React.RefObject<HTMLInputElement>;
   refInputBirthday: React.RefObject<HTMLInputElement>;
   refInputPhone: React.RefObject<HTMLInputElement>;
-  isNameErrorEmpty: boolean | HTMLInputElement;
+  isNameErrorEmpty: string | HTMLInputElement;
   isCpfErrorEmpty: string | HTMLInputElement;
   isEmailErrorEmpty: boolean | HTMLInputElement;
   isBirthdayErrorEmpty: boolean | HTMLInputElement;
-  isPhoneErrorEmpty: boolean | HTMLInputElement;
-  setNameErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  isPhoneErrorEmpty: string | HTMLInputElement;
+  setNameErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setCpfErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setEmailErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
   setBirthdayErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
-  setPhoneErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  setPhoneErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   ValidateEmptyInputName: () => void;
   ValidateEmptyInputCpf: () => void;
   ValidateEmptyInputEmail: () => void;
@@ -59,19 +59,23 @@ export const CadastroProvider = ({
     HTMLInputElement | boolean
   >(false);
   const [isPhoneErrorEmpty, setPhoneErrorEmpty] = useState<
-    HTMLInputElement | boolean
-  >(false);
+    HTMLInputElement | string
+  >("");
 
   const [isNameErrorEmpty, setNameErrorEmpty] = useState<
-    HTMLInputElement | boolean
-  >(false);
+    HTMLInputElement | string
+  >("");
+
+  const MENSAGEM_CAMPO_OBRIGATORIO = "Campo obrigatório";
 
   function ValidateEmptyInputName() {
     const value = refInputName.current?.value.trim();
+    let mensagem = "";
 
-    if (!value || value.trim() === "") {
-      setNameErrorEmpty(true);
+    if (!value) {
+      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
+    setNameErrorEmpty(mensagem);
   }
 
   function FormatCpf(cpf: string): string {
@@ -86,14 +90,15 @@ export const CadastroProvider = ({
 
   function ValidateEmptyInputCpf() {
     const value = refInputCpf.current?.value.trim();
+    const Mensagem_CPF_Inválido = "Por favor, insira um CPF válido";
+    let mensagem = "";
 
-    if (!value || value.trim() === "") {
-      const message = `*Campo obrigatório`;
-      setCpfErrorEmpty(message);
-    } else if (value?.length < 11) {
-      const message = `Por favor, insira um CPF válido`;
-      setCpfErrorEmpty(message);
+    if (!value) {
+      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+    } else if (value.length !== 11) {
+      mensagem = Mensagem_CPF_Inválido;
     }
+    setCpfErrorEmpty(mensagem);
   }
 
   function ValidateEmptyInputEmail() {
@@ -114,10 +119,12 @@ export const CadastroProvider = ({
 
   function ValidateEmptyInputPhone() {
     const value = refInputPhone.current?.value.trim();
+    let mensagem = "";
 
-    if (!value || value.trim() === "") {
-      setPhoneErrorEmpty(true);
+    if (!value) {
+      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
+    setPhoneErrorEmpty(mensagem);
   }
 
   async function handleSubmit(event: SyntheticEvent) {
