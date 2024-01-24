@@ -106,14 +106,12 @@ export default function ResgiterPage() {
                   isEmailErrorEmpty ? styles.ErrorInput : ""
                 }`}
                 onBlur={ValidateEmptyInputEmail}
-                onChange={() => setEmailErrorEmpty(false)}
+                onChange={() => setEmailErrorEmpty("")}
                 ref={refInputEmail}
               />
-              {isEmailErrorEmpty && (
-                <span className={styles.SpanErrorRender}>
-                  * Campo obrigatório
-                </span>
-              )}
+              <span className={styles.SpanErrorRender}>
+                {isEmailErrorEmpty as string}
+              </span>
             </div>
             <div className={styles.ContentGender}>
               <input type="radio" id="sex-m" name="sex" value={"Masculino"} />
@@ -141,14 +139,12 @@ export default function ResgiterPage() {
                   isBirthdayErrorEmpty ? styles.ErrorInput : ""
                 }`}
                 onBlur={ValidateEmptyInputBirthday}
-                onChange={() => setBirthdayErrorEmpty(false)}
+                onChange={() => setBirthdayErrorEmpty("")}
                 ref={refInputBirthday}
               />
-              {isBirthdayErrorEmpty && (
-                <span className={styles.SpanErrorRender}>
-                  * Campo obrigatório
-                </span>
-              )}
+              <span className={styles.SpanErrorRender}>
+                {isBirthdayErrorEmpty as string}
+              </span>
             </div>
             <div className={styles.ContainerOptions}>
               <label htmlFor="phone">Telefone</label>

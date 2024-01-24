@@ -19,13 +19,13 @@ interface CadastroContextProps {
   refInputPhone: React.RefObject<HTMLInputElement>;
   isNameErrorEmpty: string | HTMLInputElement;
   isCpfErrorEmpty: string | HTMLInputElement;
-  isEmailErrorEmpty: boolean | HTMLInputElement;
-  isBirthdayErrorEmpty: boolean | HTMLInputElement;
+  isEmailErrorEmpty: string | HTMLInputElement;
+  isBirthdayErrorEmpty: string | HTMLInputElement;
   isPhoneErrorEmpty: string | HTMLInputElement;
   setNameErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setCpfErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setEmailErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
-  setBirthdayErrorEmpty: Dispatch<SetStateAction<boolean | HTMLInputElement>>;
+  setEmailErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setBirthdayErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setPhoneErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   ValidateEmptyInputName: () => void;
   ValidateEmptyInputCpf: () => void;
@@ -53,11 +53,11 @@ export const CadastroProvider = ({
     HTMLInputElement | string
   >("");
   const [isEmailErrorEmpty, setEmailErrorEmpty] = useState<
-    HTMLInputElement | boolean
-  >(false);
+    HTMLInputElement | string
+  >("");
   const [isBirthdayErrorEmpty, setBirthdayErrorEmpty] = useState<
-    HTMLInputElement | boolean
-  >(false);
+    HTMLInputElement | string
+  >("");
   const [isPhoneErrorEmpty, setPhoneErrorEmpty] = useState<
     HTMLInputElement | string
   >("");
@@ -103,18 +103,22 @@ export const CadastroProvider = ({
 
   function ValidateEmptyInputEmail() {
     const value = refInputEmail.current?.value.trim();
+    let mensagem = "";
 
-    if (!value || value.trim() === "") {
-      setEmailErrorEmpty(true);
+    if (!value) {
+      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
+    setEmailErrorEmpty(mensagem);
   }
 
   function ValidateEmptyInputBirthday() {
     const value = refInputBirthday.current?.value.trim();
+    let mensagem = "";
 
-    if (!value || value.trim() === "") {
-      setBirthdayErrorEmpty(true);
+    if (!value) {
+      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
+    setBirthdayErrorEmpty(mensagem);
   }
 
   function ValidateEmptyInputPhone() {
