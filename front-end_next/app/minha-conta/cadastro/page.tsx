@@ -11,21 +11,27 @@ export default function ResgiterPage() {
     refInputName,
     refInputCpf,
     refInputEmail,
+    refInputGenderMan,
+    refInputGenderWoman,
+    refInputGenderUninformed,
     refInputBirthday,
     refInputPhone,
     isCpfErrorEmpty,
     isEmailErrorEmpty,
+    isGenderErrorEmpty,
     isBirthdayErrorEmpty,
     isPhoneErrorEmpty,
     isNameErrorEmpty,
     setNameErrorEmpty,
     setCpfErrorEmpty,
     setEmailErrorEmpty,
+    setGenderErrorEmpty,
     setBirthdayErrorEmpty,
     setPhoneErrorEmpty,
     ValidateEmptyInputName,
     ValidateEmptyInputCpf,
     ValidateEmptyInputEmail,
+    ValidateEmptyInputsGender,
     ValidateEmptyInputBirthday,
     ValidateEmptyInputPhone,
     handleSubmit,
@@ -115,17 +121,47 @@ export default function ResgiterPage() {
               </span>
             </div>
             <div className={styles.ContentGender}>
-              <input type="radio" id="sex-m" name="sex" value={"Masculino"} />
-              <label htmlFor="sex-m">Masculino</label>
-              <input type="radio" id="sex-f" name="sex" value={"Feminino"} />
-              <label htmlFor="sex-f">Feminino</label>
-              <input
-                type="radio"
-                id="undefined"
-                name="sex"
-                value={"Não informado"}
-              />
-              <label htmlFor="undefined">Não informar</label>
+              <div className={styles.OptionsGender}>
+                <input
+                  ref={refInputGenderMan}
+                  type="radio"
+                  id="sex-m"
+                  value={"Masculino"}
+                  name="gender"
+                  onChange={() => setGenderErrorEmpty("")}
+                  onBlur={ValidateEmptyInputsGender}
+                />
+                <label htmlFor="sex-m">Masculino</label>
+              </div>
+              <div className={styles.OptionsGender}>
+                <input
+                  ref={refInputGenderWoman}
+                  type="radio"
+                  id="sex-f"
+                  name="gender"
+                  value={"Feminino"}
+                  onChange={() => setGenderErrorEmpty("")}
+                  onBlur={ValidateEmptyInputsGender}
+                />
+                <label htmlFor="sex-f">Feminino</label>
+              </div>
+              <div className={styles.OptionsGender}>
+                <input
+                  ref={refInputGenderUninformed}
+                  type="radio"
+                  id="undefined"
+                  name="gender"
+                  value={"Não informado"}
+                  onChange={() => setGenderErrorEmpty("")}
+                  onBlur={ValidateEmptyInputsGender}
+                />
+                <label htmlFor="undefined">Não informar</label>
+              </div>
+              <div className={styles.OptionsGender}>
+                <span className={styles.SpanErrorRender}>
+                  {isGenderErrorEmpty as string}
+                </span>
+              </div>
             </div>
             <div className={styles.ContainerOptions}>
               <label htmlFor="birthday">Data de nascimento</label>
