@@ -90,10 +90,20 @@
 }
 
 .ContentGender {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ContentGender .OptionsGender {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin: 1rem 0 2rem;
+  grid-row: 1;
+}
+
+.ContentGender div:nth-child(4) {
+  grid-row: 2;
 }
 
 .ContentGender input {
