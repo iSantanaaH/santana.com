@@ -72,6 +72,10 @@
   width: 22rem;
 }
 
+.ContainerOptions .InputPassword {
+  width: 15rem;
+}
+
 .ContainerOptions .InputBirthday {
   width: 6rem;
 }
