@@ -15,6 +15,7 @@ interface CadastroContextProps {
   refInputName: React.RefObject<HTMLInputElement>;
   refInputCpf: React.RefObject<HTMLInputElement>;
   refInputEmail: React.RefObject<HTMLInputElement>;
+  refInputPasssword: React.RefObject<HTMLInputElement>;
   refInputBirthday: React.RefObject<HTMLInputElement>;
   refInputGenderMan: React.RefObject<HTMLInputElement>;
   refInputGenderWoman: React.RefObject<HTMLInputElement>;
@@ -23,18 +24,21 @@ interface CadastroContextProps {
   isNameErrorEmpty: string | HTMLInputElement;
   isCpfErrorEmpty: string | HTMLInputElement;
   isEmailErrorEmpty: string | HTMLInputElement;
+  isPasswordErrorEmpty: string | HTMLInputElement;
   isGenderErrorEmpty: string | HTMLInputElement;
   isBirthdayErrorEmpty: string | HTMLInputElement;
   isPhoneErrorEmpty: string | HTMLInputElement;
   setNameErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setCpfErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setEmailErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setPasswordErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setGenderErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setBirthdayErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setPhoneErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
   ValidateEmptyInputName: () => void;
   ValidateEmptyInputCpf: () => void;
   ValidateEmptyInputEmail: () => void;
+  ValidateEmptyInputPassword: () => void;
   ValidateEmptyInputsGender: () => void;
   ValidateEmptyInputBirthday: () => void;
   ValidateEmptyInputPhone: () => void;
@@ -51,6 +55,7 @@ export const CadastroProvider = ({
   const refInputName = useRef<HTMLInputElement | null>(null);
   const refInputCpf = useRef<HTMLInputElement | null>(null);
   const refInputEmail = useRef<HTMLInputElement | null>(null);
+  const refInputPasssword = useRef<HTMLInputElement | null>(null);
   const refInputGenderMan = useRef<HTMLInputElement | null>(null);
   const refInputGenderWoman = useRef<HTMLInputElement | null>(null);
   const refInputGenderUninformed = useRef<HTMLInputElement | null>(null);
@@ -62,6 +67,9 @@ export const CadastroProvider = ({
     HTMLInputElement | string
   >("");
   const [isEmailErrorEmpty, setEmailErrorEmpty] = useState<
+    HTMLInputElement | string
+  >("");
+  const [isPasswordErrorEmpty, setPasswordErrorEmpty] = useState<
     HTMLInputElement | string
   >("");
   const [isBirthdayErrorEmpty, setBirthdayErrorEmpty] = useState<
@@ -122,6 +130,19 @@ export const CadastroProvider = ({
     setEmailErrorEmpty(mensagem);
   }
 
+  function ValidateEmptyInputPassword() {
+    const value = refInputPasssword.current?.value.trim();
+    const Mensagem_Senha_Inválida = "A senha deve conter no mínimo 12 dígitos";
+    let mensagem = "";
+
+    if (!value) {
+      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+    } else if (value.length !== 12) {
+      mensagem = Mensagem_Senha_Inválida;
+    }
+    setPasswordErrorEmpty(mensagem);
+  }
+
   function ValidateEmptyInputsGender() {
     const valueInputGenderMan = refInputGenderMan.current?.checked;
     const valueInputGenderWoman = refInputGenderWoman.current?.checked;
@@ -168,6 +189,7 @@ export const CadastroProvider = ({
     ValidateEmptyInputName();
     ValidateEmptyInputCpf();
     ValidateEmptyInputEmail();
+    ValidateEmptyInputPassword();
     ValidateEmptyInputsGender();
     ValidateEmptyInputBirthday();
     ValidateEmptyInputPhone();
@@ -229,6 +251,7 @@ export const CadastroProvider = ({
         refInputName,
         refInputCpf,
         refInputEmail,
+        refInputPasssword,
         refInputGenderMan,
         refInputGenderWoman,
         refInputGenderUninformed,
@@ -236,6 +259,7 @@ export const CadastroProvider = ({
         refInputPhone,
         isCpfErrorEmpty,
         isEmailErrorEmpty,
+        isPasswordErrorEmpty,
         isGenderErrorEmpty,
         isBirthdayErrorEmpty,
         isPhoneErrorEmpty,
@@ -243,12 +267,14 @@ export const CadastroProvider = ({
         setNameErrorEmpty,
         setCpfErrorEmpty,
         setEmailErrorEmpty,
+        setPasswordErrorEmpty,
         setGenderErrorEmpty,
         setBirthdayErrorEmpty,
         setPhoneErrorEmpty,
         ValidateEmptyInputName,
         ValidateEmptyInputCpf,
         ValidateEmptyInputEmail,
+        ValidateEmptyInputPassword,
         ValidateEmptyInputsGender,
         ValidateEmptyInputBirthday,
         ValidateEmptyInputPhone,
