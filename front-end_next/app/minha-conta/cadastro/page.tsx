@@ -120,6 +120,20 @@ export default function ResgiterPage() {
                 {isEmailErrorEmpty as string}
               </span>
             </div>
+            <div className={styles.ContainerOptions}>
+              <label htmlFor="email">Senha</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                placeholder="senha"
+                className={`${styles.InputPassword} ${
+                  isEmailErrorEmpty ? styles.ErrorInput : ""
+                }`}
+              />
+            </div>
+
             <div className={styles.ContentGender}>
               <div className={styles.OptionsGender}>
                 <input
