@@ -11,6 +11,7 @@ export default function ResgiterPage() {
     refInputName,
     refInputCpf,
     refInputEmail,
+    refInputPasssword,
     refInputGenderMan,
     refInputGenderWoman,
     refInputGenderUninformed,
@@ -18,6 +19,7 @@ export default function ResgiterPage() {
     refInputPhone,
     isCpfErrorEmpty,
     isEmailErrorEmpty,
+    isPasswordErrorEmpty,
     isGenderErrorEmpty,
     isBirthdayErrorEmpty,
     isPhoneErrorEmpty,
@@ -25,12 +27,14 @@ export default function ResgiterPage() {
     setNameErrorEmpty,
     setCpfErrorEmpty,
     setEmailErrorEmpty,
+    setPasswordErrorEmpty,
     setGenderErrorEmpty,
     setBirthdayErrorEmpty,
     setPhoneErrorEmpty,
     ValidateEmptyInputName,
     ValidateEmptyInputCpf,
     ValidateEmptyInputEmail,
+    ValidateEmptyInputPassword,
     ValidateEmptyInputsGender,
     ValidateEmptyInputBirthday,
     ValidateEmptyInputPhone,
@@ -121,17 +125,23 @@ export default function ResgiterPage() {
               </span>
             </div>
             <div className={styles.ContainerOptions}>
-              <label htmlFor="email">Senha</label>
+              <label htmlFor="password">Senha</label>
               <input
+                ref={refInputPasssword}
                 type="password"
                 id="password"
                 name="password"
                 required
                 placeholder="senha"
+                onChange={() => setPasswordErrorEmpty("")}
+                onBlur={ValidateEmptyInputPassword}
                 className={`${styles.InputPassword} ${
-                  isEmailErrorEmpty ? styles.ErrorInput : ""
+                  isPasswordErrorEmpty ? styles.ErrorInput : styles.AcceptInput
                 }`}
               />
+              <span className={styles.SpanErrorRender}>
+                {isPasswordErrorEmpty as string}
+              </span>
             </div>
 
             <div className={styles.ContentGender}>
