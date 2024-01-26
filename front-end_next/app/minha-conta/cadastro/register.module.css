@@ -29,12 +29,12 @@
 
 .ArticleTitle h1 {
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .ArticleTitle p {
   text-align: justify;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .MainContainerLoging {
@@ -118,7 +118,6 @@
 .ContainerButton p {
   width: 24rem;
   margin-bottom: 1.5rem;
-  font-size: 1.1rem;
 }
 
 .ContainerButton button {
@@ -133,7 +132,6 @@
     var(--button600)
   );
   color: var(--whiteFull);
-  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -156,7 +154,7 @@
 }
 
 .ContentFormLogin form input {
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 1rem;
   border: 0.1rem solid var(--gray-200);
   outline: none;

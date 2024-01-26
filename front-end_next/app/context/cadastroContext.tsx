@@ -233,7 +233,7 @@ export const CadastroProvider = ({
         );
 
         if (response.status === 200) {
-          refFormRegister.current?.reset;
+          refFormRegister.current?.reset();
           console.log(response.data);
         } else {
           console.error(`Erro ao enviar o formulário ${response.status}`);
