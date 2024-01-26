@@ -106,6 +106,12 @@
   grid-row: 1;
 }
 
+.OptionsGender label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .ContentGender div:nth-child(4) {
   grid-row: 2;
 }
