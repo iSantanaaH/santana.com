@@ -2,21 +2,11 @@
 import Image from "next/image";
 import styles from "./register.module.css";
 
-import { useCadatroContext } from "@/app/context/cadastroContext";
+import { useCadatroContext } from "@/app/context/cadastro/cadastroContext";
 import Link from "next/link";
 
 export default function ResgiterPage() {
   const {
-    refFormRegister,
-    refInputName,
-    refInputCpf,
-    refInputEmail,
-    refInputPasssword,
-    refInputGenderMan,
-    refInputGenderWoman,
-    refInputGenderUninformed,
-    refInputBirthday,
-    refInputPhone,
     isCpfErrorEmpty,
     isEmailErrorEmpty,
     isPasswordErrorEmpty,
@@ -31,13 +21,7 @@ export default function ResgiterPage() {
     setGenderErrorEmpty,
     setBirthdayErrorEmpty,
     setPhoneErrorEmpty,
-    ValidateEmptyInputName,
-    ValidateEmptyInputCpf,
-    ValidateEmptyInputEmail,
-    ValidateEmptyInputPassword,
-    ValidateEmptyInputsGender,
-    ValidateEmptyInputBirthday,
-    ValidateEmptyInputPhone,
+    handleValidateEmptyInputName,
     handleSubmit,
   } = useCadatroContext();
 
@@ -64,7 +48,7 @@ export default function ResgiterPage() {
         </article>
 
         <div className={styles.ContentFormLogin}>
-          <form ref={refFormRegister} onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className={styles.ContainerOptions}>
               <label htmlFor="name">Nome completo</label>
               <input
@@ -76,9 +60,8 @@ export default function ResgiterPage() {
                 className={`${styles.InputName} ${
                   isNameErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                onBlur={ValidateEmptyInputName}
+                onBlur={handleValidateEmptyInputName}
                 onChange={() => setNameErrorEmpty("")}
-                ref={refInputName}
               />
               <span className={styles.SpanErrorRender}>
                 {isNameErrorEmpty as string}
@@ -97,9 +80,7 @@ export default function ResgiterPage() {
                 className={`${styles.InputCPF} ${
                   isCpfErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                onBlur={ValidateEmptyInputCpf}
                 onChange={() => setCpfErrorEmpty("")}
-                ref={refInputCpf}
               />
               <span className={styles.SpanErrorRender}>
                 {isCpfErrorEmpty as string}
@@ -116,9 +97,7 @@ export default function ResgiterPage() {
                 className={`${styles.InputEmail} ${
                   isEmailErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                onBlur={ValidateEmptyInputEmail}
                 onChange={() => setEmailErrorEmpty("")}
-                ref={refInputEmail}
               />
               <span className={styles.SpanErrorRender}>
                 {isEmailErrorEmpty as string}
@@ -127,16 +106,14 @@ export default function ResgiterPage() {
             <div className={styles.ContainerOptions}>
               <label htmlFor="password">Senha</label>
               <input
-                ref={refInputPasssword}
                 type="password"
                 id="password"
                 name="password"
                 required
                 placeholder="senha"
                 onChange={() => setPasswordErrorEmpty("")}
-                onBlur={ValidateEmptyInputPassword}
                 className={`${styles.InputPassword} ${
-                  isPasswordErrorEmpty ? styles.ErrorInput : styles.AcceptInput
+                  isPasswordErrorEmpty ? styles.ErrorInput : ""
                 }`}
               />
               <span className={styles.SpanErrorRender}>
@@ -149,13 +126,11 @@ export default function ResgiterPage() {
                 <label htmlFor="sex-m">
                   <span>Masculino</span>
                   <input
-                    ref={refInputGenderMan}
                     type="radio"
                     id="sex-m"
                     value={"Masculino"}
                     name="gender"
                     onChange={() => setGenderErrorEmpty("")}
-                    onBlur={ValidateEmptyInputsGender}
                   />
                 </label>
               </div>
@@ -163,13 +138,11 @@ export default function ResgiterPage() {
                 <label htmlFor="sex-f">
                   <span>Feminino</span>
                   <input
-                    ref={refInputGenderWoman}
                     type="radio"
                     id="sex-f"
                     name="gender"
                     value={"Feminino"}
                     onChange={() => setGenderErrorEmpty("")}
-                    onBlur={ValidateEmptyInputsGender}
                   />
                 </label>
               </div>
@@ -177,13 +150,11 @@ export default function ResgiterPage() {
                 <label htmlFor="undefined">
                   <span>Não informar</span>
                   <input
-                    ref={refInputGenderUninformed}
                     type="radio"
                     id="undefined"
                     name="gender"
                     value={"Não informado"}
                     onChange={() => setGenderErrorEmpty("")}
-                    onBlur={ValidateEmptyInputsGender}
                   />
                 </label>
               </div>
@@ -205,9 +176,7 @@ export default function ResgiterPage() {
                 className={`${styles.InputBirthday} ${
                   isBirthdayErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                onBlur={ValidateEmptyInputBirthday}
                 onChange={() => setBirthdayErrorEmpty("")}
-                ref={refInputBirthday}
               />
               <span className={styles.SpanErrorRender}>
                 {isBirthdayErrorEmpty as string}
@@ -224,9 +193,7 @@ export default function ResgiterPage() {
                 className={`${styles.InputPhone} ${
                   isPhoneErrorEmpty ? styles.ErrorInput : ""
                 }`}
-                onBlur={ValidateEmptyInputPhone}
                 onChange={() => setPhoneErrorEmpty("")}
-                ref={refInputPhone}
               />
               <span className={styles.SpanErrorRender}>
                 {isPhoneErrorEmpty as string}
