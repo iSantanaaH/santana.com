@@ -88,6 +88,10 @@
   border: 0.1rem solid var(--redError);
 }
 
+.ContentFormLogin form .AcceptInput {
+  border: 0.1rem solid var(--green400);
+}
+
 .ContentFormLogin form .SpanErrorRender {
   color: var(--redError);
   margin: -0.5rem 0 1rem;
