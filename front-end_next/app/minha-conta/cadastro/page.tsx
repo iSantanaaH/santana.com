@@ -1,27 +1,42 @@
 "use client";
 import Image from "next/image";
 import styles from "./register.module.css";
-
-import { useCadatroContext } from "@/app/context/cadastro/cadastroContext";
 import Link from "next/link";
+import { useCadatroContext } from "@/app/context/cadastro/cadastroContext";
 
 export default function ResgiterPage() {
   const {
-    isCpfErrorEmpty,
-    isEmailErrorEmpty,
-    isPasswordErrorEmpty,
-    isGenderErrorEmpty,
-    isBirthdayErrorEmpty,
-    isPhoneErrorEmpty,
-    isNameErrorEmpty,
-    setNameErrorEmpty,
-    setCpfErrorEmpty,
-    setEmailErrorEmpty,
-    setPasswordErrorEmpty,
-    setGenderErrorEmpty,
-    setBirthdayErrorEmpty,
-    setPhoneErrorEmpty,
-    handleValidateEmptyInputName,
+    refFormRegister,
+    refInputName,
+    refInputCpf,
+    refInputEmail,
+    refInputPasssword,
+    refInputGenderMan,
+    refInputGenderWoman,
+    refInputGenderUninformed,
+    refInputBirthday,
+    refInputPhone,
+    isNameError,
+    isCpfError,
+    isEmailError,
+    isPasswordError,
+    isGenderError,
+    isBirthdateError,
+    isPhoneError,
+    setNameError,
+    setCpfError,
+    setEmailError,
+    setPasswordError,
+    setGenderError,
+    setBirthdayError,
+    setPhoneError,
+    handleValidateName,
+    handleValidateCpf,
+    handleValidateEmail,
+    handleValidatePassword,
+    handleValidateGender,
+    handleValidateBirthdate,
+    handleValidatePhone,
     handleSubmit,
   } = useCadatroContext();
 
@@ -48,7 +63,7 @@ export default function ResgiterPage() {
         </article>
 
         <div className={styles.ContentFormLogin}>
-          <form onSubmit={handleSubmit}>
+          <form ref={refFormRegister} onSubmit={handleSubmit}>
             <div className={styles.ContainerOptions}>
               <label htmlFor="name">Nome completo</label>
               <input
@@ -58,13 +73,14 @@ export default function ResgiterPage() {
                 required
                 placeholder="Nome"
                 className={`${styles.InputName} ${
-                  isNameErrorEmpty ? styles.ErrorInput : ""
+                  isNameError ? styles.ErrorInput : ""
                 }`}
-                onBlur={handleValidateEmptyInputName}
-                onChange={() => setNameErrorEmpty("")}
+                onBlur={handleValidateName}
+                onChange={() => setNameError("")}
+                ref={refInputName}
               />
               <span className={styles.SpanErrorRender}>
-                {isNameErrorEmpty as string}
+                {isNameError as string}
               </span>
             </div>
 
@@ -78,12 +94,14 @@ export default function ResgiterPage() {
                 required
                 placeholder="___.___.___-__"
                 className={`${styles.InputCPF} ${
-                  isCpfErrorEmpty ? styles.ErrorInput : ""
+                  isCpfError ? styles.ErrorInput : ""
                 }`}
-                onChange={() => setCpfErrorEmpty("")}
+                onBlur={handleValidateCpf}
+                onChange={() => setCpfError("")}
+                ref={refInputCpf}
               />
               <span className={styles.SpanErrorRender}>
-                {isCpfErrorEmpty as string}
+                {isCpfError as string}
               </span>
             </div>
             <div className={styles.ContainerOptions}>
@@ -95,29 +113,33 @@ export default function ResgiterPage() {
                 required
                 placeholder="Digite seu email"
                 className={`${styles.InputEmail} ${
-                  isEmailErrorEmpty ? styles.ErrorInput : ""
+                  isEmailError ? styles.ErrorInput : ""
                 }`}
-                onChange={() => setEmailErrorEmpty("")}
+                onBlur={handleValidateEmail}
+                onChange={() => setEmailError("")}
+                ref={refInputEmail}
               />
               <span className={styles.SpanErrorRender}>
-                {isEmailErrorEmpty as string}
+                {isEmailError as string}
               </span>
             </div>
             <div className={styles.ContainerOptions}>
-              <label htmlFor="password">Senha</label>
+              <label htmlFor="email">Senha</label>
               <input
+                ref={refInputPasssword}
                 type="password"
                 id="password"
                 name="password"
                 required
                 placeholder="senha"
-                onChange={() => setPasswordErrorEmpty("")}
                 className={`${styles.InputPassword} ${
-                  isPasswordErrorEmpty ? styles.ErrorInput : ""
+                  isPasswordError ? styles.ErrorInput : ""
                 }`}
+                onChange={() => setPasswordError("")}
+                onBlur={handleValidatePassword}
               />
               <span className={styles.SpanErrorRender}>
-                {isPasswordErrorEmpty as string}
+                {isPasswordError as string}
               </span>
             </div>
 
@@ -126,11 +148,13 @@ export default function ResgiterPage() {
                 <label htmlFor="sex-m">
                   <span>Masculino</span>
                   <input
+                    ref={refInputGenderMan}
                     type="radio"
                     id="sex-m"
                     value={"Masculino"}
                     name="gender"
-                    onChange={() => setGenderErrorEmpty("")}
+                    onChange={() => setGenderError("")}
+                    onBlur={handleValidateGender}
                   />
                 </label>
               </div>
@@ -138,11 +162,13 @@ export default function ResgiterPage() {
                 <label htmlFor="sex-f">
                   <span>Feminino</span>
                   <input
+                    ref={refInputGenderWoman}
                     type="radio"
                     id="sex-f"
                     name="gender"
                     value={"Feminino"}
-                    onChange={() => setGenderErrorEmpty("")}
+                    onChange={() => setGenderError("")}
+                    onBlur={handleValidateGender}
                   />
                 </label>
               </div>
@@ -150,17 +176,19 @@ export default function ResgiterPage() {
                 <label htmlFor="undefined">
                   <span>Não informar</span>
                   <input
+                    ref={refInputGenderUninformed}
                     type="radio"
                     id="undefined"
                     name="gender"
                     value={"Não informado"}
-                    onChange={() => setGenderErrorEmpty("")}
+                    onChange={() => setGenderError("")}
+                    onBlur={handleValidateGender}
                   />
                 </label>
               </div>
               <div className={styles.OptionsGender}>
                 <span className={styles.SpanErrorRender}>
-                  {isGenderErrorEmpty as string}
+                  {isGenderError as string}
                 </span>
               </div>
             </div>
@@ -174,12 +202,14 @@ export default function ResgiterPage() {
                 required
                 placeholder="__/__/____"
                 className={`${styles.InputBirthday} ${
-                  isBirthdayErrorEmpty ? styles.ErrorInput : ""
+                  isBirthdateError ? styles.ErrorInput : ""
                 }`}
-                onChange={() => setBirthdayErrorEmpty("")}
+                onBlur={handleValidateBirthdate}
+                onChange={() => setBirthdayError("")}
+                ref={refInputBirthday}
               />
               <span className={styles.SpanErrorRender}>
-                {isBirthdayErrorEmpty as string}
+                {isBirthdateError as string}
               </span>
             </div>
             <div className={styles.ContainerOptions}>
@@ -191,12 +221,14 @@ export default function ResgiterPage() {
                 required
                 placeholder="(__) _____-____"
                 className={`${styles.InputPhone} ${
-                  isPhoneErrorEmpty ? styles.ErrorInput : ""
+                  isPhoneError ? styles.ErrorInput : ""
                 }`}
-                onChange={() => setPhoneErrorEmpty("")}
+                onBlur={handleValidatePhone}
+                onChange={() => setPhoneError("")}
+                ref={refInputPhone}
               />
               <span className={styles.SpanErrorRender}>
-                {isPhoneErrorEmpty as string}
+                {isPhoneError as string}
               </span>
             </div>
             <div className={styles.ContainerButton}>
