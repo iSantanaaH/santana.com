@@ -1,22 +1,36 @@
 import { Dispatch, SetStateAction, SyntheticEvent } from "react";
 
 export interface CadastroContextProps {
-  isNameErrorEmpty: string | HTMLInputElement;
-  isCpfErrorEmpty: string | HTMLInputElement;
-  isEmailErrorEmpty: string | HTMLInputElement;
-  isPasswordErrorEmpty: string | HTMLInputElement;
-  isGenderErrorEmpty: string | HTMLInputElement;
-  isBirthdayErrorEmpty: string | HTMLInputElement;
-  isPhoneErrorEmpty: string | HTMLInputElement;
-  setNameErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setCpfErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setEmailErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setPasswordErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setGenderErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setBirthdayErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setPhoneErrorEmpty: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  handleValidateEmptyInputName: (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  refFormRegister: React.RefObject<HTMLFormElement>;
+  refInputName: React.RefObject<HTMLInputElement>;
+  refInputCpf: React.RefObject<HTMLInputElement>;
+  refInputEmail: React.RefObject<HTMLInputElement>;
+  refInputPasssword: React.RefObject<HTMLInputElement>;
+  refInputBirthday: React.RefObject<HTMLInputElement>;
+  refInputGenderMan: React.RefObject<HTMLInputElement>;
+  refInputGenderWoman: React.RefObject<HTMLInputElement>;
+  refInputGenderUninformed: React.RefObject<HTMLInputElement>;
+  refInputPhone: React.RefObject<HTMLInputElement>;
+  isNameError: string | HTMLInputElement;
+  isCpfError: string | HTMLInputElement;
+  isEmailError: string | HTMLInputElement;
+  isPasswordError: string | HTMLInputElement;
+  isGenderError: string | HTMLInputElement;
+  isBirthdateError: string | HTMLInputElement;
+  isPhoneError: string | HTMLInputElement;
+  setNameError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setCpfError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setEmailError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setPasswordError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setGenderError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setBirthdayError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setPhoneError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  handleValidateName: () => void;
+  handleValidateCpf: () => void;
+  handleValidateEmail: () => void;
+  handleValidatePassword: () => void;
+  handleValidateGender: () => void;
+  handleValidateBirthdate: () => void;
+  handleValidatePhone: () => void;
   handleSubmit: (event: SyntheticEvent) => void;
 }
