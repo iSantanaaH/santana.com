@@ -34,5 +34,6 @@ export interface CadastroContextProps {
   handleValidateGender: () => void;
   handleValidateBirthdate: () => void;
   handleValidatePhone: () => void;
+  handleSetColorEmail: () => void;
   handleSubmit: (event: SyntheticEvent) => void;
 }
