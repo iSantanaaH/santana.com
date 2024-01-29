@@ -26,7 +26,9 @@ export interface CadastroContextProps {
   setBirthdayError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setPhoneError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   handleValidateName: () => void;
+  handleSetColorName: () => void;
   handleValidateCpf: () => void;
+  handleSetColorCpf: () => void;
   handleValidateEmail: () => void;
   handleValidatePassword: () => void;
   handleValidateGender: () => void;
