@@ -130,14 +130,16 @@ export const CadastroProvider = ({
   function handleSetColorEmail() {
     const value = refInputEmail.current?.value.trim();
 
-    if (value && value.length >= 1) {
-      setEmailError("");
-      const inputElement = refInputEmail.current;
-      inputElement?.classList.add(styles.InputEmail, styles.AcceptInput);
-    } else if (!value) {
-      const inputElement = refInputEmail.current;
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputEmail, styles.ErrorInput);
+    if (value) {
+      const regexEmail: RegExp =
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
+
+      if (regexEmail.test(value)) {
+        const inputElement = refInputEmail.current;
+        inputElement?.classList.add(styles.AcceptInput);
+        inputElement?.classList.remove(styles.ErrorInput);
+        setEmailError("");
+      }
     }
   }
 
@@ -332,6 +334,7 @@ export const CadastroProvider = ({
         handleValidateCpf,
         handleSetColorCpf,
         handleValidateEmail,
+        handleSetColorEmail,
         handleValidatePassword,
         handleValidateGender,
         handleValidateBirthdate,
