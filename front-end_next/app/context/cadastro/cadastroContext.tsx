@@ -107,25 +107,37 @@ export const CadastroProvider = ({
 
   function handleValidateEmail() {
     const value = refInputEmail.current?.value.trim();
+    let Mensagem_Email_Invalido = "Formato de email inválido";
     let mensagem = "";
 
     if (!value) {
       mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+      setEmailError(mensagem);
+    } else {
+      if (value) {
+        const regexEmail: RegExp =
+          /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
+
+        if (regexEmail.test(value)) {
+          setEmailError("");
+        } else {
+          setEmailError(Mensagem_Email_Invalido);
+        }
+      }
     }
-    setEmailError(mensagem);
   }
 
   function handleSetColorEmail() {
-    const value = refInputName.current?.value.trim();
+    const value = refInputEmail.current?.value.trim();
 
     if (value && value.length >= 1) {
-      setNameError("");
-      const inputElement = refInputName.current;
-      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+      setEmailError("");
+      const inputElement = refInputEmail.current;
+      inputElement?.classList.add(styles.InputEmail, styles.AcceptInput);
     } else if (!value) {
-      const inputElement = refInputName.current;
+      const inputElement = refInputEmail.current;
       inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+      inputElement?.classList.add(styles.InputEmail, styles.ErrorInput);
     }
   }
 
@@ -276,6 +288,7 @@ export const CadastroProvider = ({
         );
 
         if (response.status === 200) {
+          console.log("Formulário enviado com sucesso!");
           refFormRegister.current?.reset();
           console.log(response.data);
         } else {
