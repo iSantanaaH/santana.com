@@ -31,7 +31,9 @@ export default function ResgiterPage() {
     setBirthdayError,
     setPhoneError,
     handleValidateName,
+    handleSetColorName,
     handleValidateCpf,
+    handleSetColorCpf,
     handleValidateEmail,
     handleValidatePassword,
     handleValidateGender,
@@ -76,7 +78,8 @@ export default function ResgiterPage() {
                   isNameError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateName}
-                onChange={() => setNameError("")}
+                onFocus={() => setNameError("")}
+                onChange={handleSetColorName}
                 ref={refInputName}
               />
               <span className={styles.SpanErrorRender}>
@@ -97,7 +100,8 @@ export default function ResgiterPage() {
                   isCpfError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateCpf}
-                onChange={() => setCpfError("")}
+                onFocus={() => setCpfError("")}
+                onChange={handleSetColorCpf}
                 ref={refInputCpf}
               />
               <span className={styles.SpanErrorRender}>
