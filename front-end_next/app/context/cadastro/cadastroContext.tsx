@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import axios from "axios";
 import { CadastroContextProps } from "./cadastroContextTypes";
+import styles from "@/app/minha-conta/cadastro/register.module.css";
 
 export const CadastroContext = createContext({} as CadastroContextProps);
 
@@ -53,6 +54,20 @@ export const CadastroProvider = ({
     setNameError(mensagem);
   }
 
+  function handleSetColorName() {
+    const value = refInputName.current?.value.trim();
+
+    if (value && value.length >= 1) {
+      setNameError("");
+      const inputElement = refInputName.current;
+      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+    } else if (!value) {
+      const inputElement = refInputName.current;
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+    }
+  }
+
   function FormatCpf(cpf: string): string {
     let valueInputCpf = refInputCpf.current?.value.trim();
     const cleanedCpf = cpf.replace(/\D/g, "");
@@ -76,6 +91,20 @@ export const CadastroProvider = ({
     setCpfError(mensagem);
   }
 
+  function handleSetColorCpf() {
+    const value = refInputCpf.current?.value.trim();
+
+    if (value && value.length === 11) {
+      setCpfError("");
+      const inputElement = refInputCpf.current;
+      inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
+    } else if (!value) {
+      const inputElement = refInputCpf.current;
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.InputCPF, styles.ErrorInput);
+    }
+  }
+
   function handleValidateEmail() {
     const value = refInputEmail.current?.value.trim();
     let mensagem = "";
@@ -84,6 +113,20 @@ export const CadastroProvider = ({
       mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
     setEmailError(mensagem);
+  }
+
+  function handleSetColorEmail() {
+    const value = refInputName.current?.value.trim();
+
+    if (value && value.length >= 1) {
+      setNameError("");
+      const inputElement = refInputName.current;
+      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+    } else if (!value) {
+      const inputElement = refInputName.current;
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+    }
   }
 
   function handleValidatePassword() {
@@ -97,6 +140,20 @@ export const CadastroProvider = ({
       mensagem = Mensagem_Senha_Inválida;
     }
     setPasswordError(mensagem);
+  }
+
+  function handleSetColorSenha() {
+    const value = refInputName.current?.value.trim();
+
+    if (value && value.length >= 1) {
+      setNameError("");
+      const inputElement = refInputName.current;
+      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+    } else if (!value) {
+      const inputElement = refInputName.current;
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+    }
   }
 
   function handleValidateGender() {
@@ -129,6 +186,20 @@ export const CadastroProvider = ({
     setBirthdayError(mensagem);
   }
 
+  function handleSetColorBirthdate() {
+    const value = refInputName.current?.value.trim();
+
+    if (value && value.length >= 1) {
+      setNameError("");
+      const inputElement = refInputName.current;
+      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+    } else if (!value) {
+      const inputElement = refInputName.current;
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+    }
+  }
+
   function handleValidatePhone() {
     const value = refInputPhone.current?.value.trim();
     let mensagem = "";
@@ -137,6 +208,20 @@ export const CadastroProvider = ({
       mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
     setPhoneError(mensagem);
+  }
+
+  function handleSetColorPhone() {
+    const value = refInputName.current?.value.trim();
+
+    if (value && value.length >= 1) {
+      setNameError("");
+      const inputElement = refInputName.current;
+      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+    } else if (!value) {
+      const inputElement = refInputName.current;
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+    }
   }
 
   async function handleSubmit(event: SyntheticEvent) {
@@ -230,7 +315,9 @@ export const CadastroProvider = ({
         setBirthdayError,
         setPhoneError,
         handleValidateName,
+        handleSetColorName,
         handleValidateCpf,
+        handleSetColorCpf,
         handleValidateEmail,
         handleValidatePassword,
         handleValidateGender,
