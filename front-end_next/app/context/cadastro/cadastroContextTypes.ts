@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, SyntheticEvent } from "react";
 
 export interface CadastroContextProps {
   cpf: string;
+  phone: string;
   refFormRegister: React.RefObject<HTMLFormElement>;
   refInputName: React.RefObject<HTMLInputElement>;
   refInputCpf: React.RefObject<HTMLInputElement>;
@@ -37,6 +38,7 @@ export interface CadastroContextProps {
   handleValidateGender: () => void;
   handleValidateBirthdate: () => void;
   handleValidatePhone: () => void;
+  handleChangePhone: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetColorEmail: () => void;
   handleSubmit: (event: SyntheticEvent) => void;
 }
