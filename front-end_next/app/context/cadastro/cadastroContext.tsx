@@ -24,7 +24,7 @@ export const CadastroProvider = ({
   const refInputGenderMan = useRef<HTMLInputElement | null>(null);
   const refInputGenderWoman = useRef<HTMLInputElement | null>(null);
   const refInputGenderUninformed = useRef<HTMLInputElement | null>(null);
-  const refInputBirthday = useRef<HTMLInputElement | null>(null);
+  const refInputBirthdate = useRef<HTMLInputElement | null>(null);
   const refInputPhone = useRef<HTMLInputElement | null>(null);
   const refFormRegister = useRef<HTMLFormElement | null>(null);
 
@@ -36,7 +36,7 @@ export const CadastroProvider = ({
   const [isPasswordError, setPasswordError] = useState<
     HTMLInputElement | string
   >("");
-  const [isBirthdateError, setBirthdayError] = useState<
+  const [isBirthdateError, setBirthdateError] = useState<
     HTMLInputElement | string
   >("");
   const [isPhoneError, setPhoneError] = useState<HTMLInputElement | string>("");
@@ -219,27 +219,30 @@ export const CadastroProvider = ({
   }
 
   function handleValidateBirthdate() {
-    const value = refInputBirthday.current?.value.trim();
     let mensagem = "";
 
-    if (!value) {
+    if (!birthdate) {
       mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
     }
-    setBirthdayError(mensagem);
+    setBirthdateError(mensagem);
   }
 
-  function handleSetColorBirthdate() {
-    const value = refInputName.current?.value.trim();
+  function handleChangeBirthdate(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value.replace(/\D/g, "");
+    let formattedBirthdate = "";
+    setBirthdateError("");
 
-    if (value && value.length >= 1) {
-      setNameError("");
-      const inputElement = refInputName.current;
-      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
-    } else if (!value) {
-      const inputElement = refInputName.current;
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+    if (value.length <= 2) {
+      formattedBirthdate = value;
+    } else if (value.length <= 4) {
+      formattedBirthdate = `${value.substring(0, 2)}/${value.substring(2)}`;
+    } else {
+      formattedBirthdate = `${value.substring(0, 2)}/${value.substring(
+        2,
+        4
+      )}/${value.substring(4, 8)}`;
     }
+    setBirthdate(formattedBirthdate);
   }
 
   function handleValidatePhone() {
@@ -305,7 +308,7 @@ export const CadastroProvider = ({
         const cpf = refInputCpf.current?.value.trim();
         const email = refInputEmail.current?.value.trim();
         const password = refInputPasssword.current?.value.trim();
-        const birthdate = refInputBirthday.current?.value.trim();
+        const birthdate = refInputBirthdate.current?.value.trim();
         const phone = refInputPhone.current?.value.trim();
         let gender = "";
 
@@ -350,6 +353,7 @@ export const CadastroProvider = ({
       value={{
         cpf,
         phone,
+        birthdate,
         refFormRegister,
         refInputName,
         refInputCpf,
@@ -358,7 +362,7 @@ export const CadastroProvider = ({
         refInputGenderMan,
         refInputGenderWoman,
         refInputGenderUninformed,
-        refInputBirthday,
+        refInputBirthdate,
         refInputPhone,
         isNameError,
         isCpfError,
@@ -372,7 +376,7 @@ export const CadastroProvider = ({
         setEmailError,
         setPasswordError,
         setGenderError,
-        setBirthdayError,
+        setBirthdateError,
         setPhoneError,
         handleValidateName,
         handleSetColorName,
@@ -384,6 +388,7 @@ export const CadastroProvider = ({
         handleValidatePassword,
         handleValidateGender,
         handleValidateBirthdate,
+        handleChangeBirthdate,
         handleValidatePhone,
         handleChangePhone,
         handleSubmit,

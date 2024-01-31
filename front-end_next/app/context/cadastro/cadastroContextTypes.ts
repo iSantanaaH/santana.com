@@ -3,12 +3,13 @@ import { Dispatch, SetStateAction, SyntheticEvent } from "react";
 export interface CadastroContextProps {
   cpf: string;
   phone: string;
+  birthdate: string;
   refFormRegister: React.RefObject<HTMLFormElement>;
   refInputName: React.RefObject<HTMLInputElement>;
   refInputCpf: React.RefObject<HTMLInputElement>;
   refInputEmail: React.RefObject<HTMLInputElement>;
   refInputPasssword: React.RefObject<HTMLInputElement>;
-  refInputBirthday: React.RefObject<HTMLInputElement>;
+  refInputBirthdate: React.RefObject<HTMLInputElement>;
   refInputGenderMan: React.RefObject<HTMLInputElement>;
   refInputGenderWoman: React.RefObject<HTMLInputElement>;
   refInputGenderUninformed: React.RefObject<HTMLInputElement>;
@@ -25,7 +26,7 @@ export interface CadastroContextProps {
   setEmailError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setPasswordError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setGenderError: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setBirthdayError: Dispatch<SetStateAction<string | HTMLInputElement>>;
+  setBirthdateError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setPhoneError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   handleValidateName: () => void;
   handleSetColorName: () => void;
@@ -36,6 +37,7 @@ export interface CadastroContextProps {
   handleValidatePassword: () => void;
   handleValidateGender: () => void;
   handleValidateBirthdate: () => void;
+  handleChangeBirthdate: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidatePhone: () => void;
   handleChangePhone: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetColorEmail: () => void;

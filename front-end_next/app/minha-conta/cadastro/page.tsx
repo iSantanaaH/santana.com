@@ -8,6 +8,7 @@ export default function ResgiterPage() {
   const {
     cpf,
     phone,
+    birthdate,
     refFormRegister,
     refInputName,
     refInputCpf,
@@ -16,7 +17,7 @@ export default function ResgiterPage() {
     refInputGenderMan,
     refInputGenderWoman,
     refInputGenderUninformed,
-    refInputBirthday,
+    refInputBirthdate,
     refInputPhone,
     isNameError,
     isCpfError,
@@ -30,18 +31,18 @@ export default function ResgiterPage() {
     setEmailError,
     setPasswordError,
     setGenderError,
-    setBirthdayError,
+    setBirthdateError,
     setPhoneError,
     handleValidateName,
     handleSetColorName,
     handleValidateCpf,
-    handleSetColorCpf,
     handleChangeCpf,
     handleValidateEmail,
     handleSetColorEmail,
     handleValidatePassword,
     handleValidateGender,
     handleValidateBirthdate,
+    handleChangeBirthdate,
     handleValidatePhone,
     handleChangePhone,
     handleSubmit,
@@ -208,16 +209,17 @@ export default function ResgiterPage() {
                 type="text"
                 id="birthday"
                 name="birthday"
-                maxLength={8}
                 required
                 placeholder="__/__/____"
                 className={`${styles.InputBirthday} ${
                   isBirthdateError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateBirthdate}
-                onChange={() => setBirthdayError("")}
-                ref={refInputBirthday}
+                onChange={handleChangeBirthdate}
+                ref={refInputBirthdate}
+                value={birthdate}
               />
+              <span className={styles.SpanInfo}>Formato DD/MM/YYYY</span>
               <span className={styles.SpanErrorRender}>
                 {isBirthdateError as string}
               </span>
