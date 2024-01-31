@@ -28,6 +28,8 @@ export const CadastroProvider = ({
   const refInputPhone = useRef<HTMLInputElement | null>(null);
   const refFormRegister = useRef<HTMLFormElement | null>(null);
 
+  const [cpf, setCpf] = useState<string>("");
+  const [formattedCpf, setFormattedCpf] = useState<string>("");
   const [isCpfError, setCpfError] = useState<HTMLInputElement | string>("");
   const [isEmailError, setEmailError] = useState<HTMLInputElement | string>("");
   const [isPasswordError, setPasswordError] = useState<
@@ -68,33 +70,67 @@ export const CadastroProvider = ({
     }
   }
 
-  function FormatCpf(cpf: string): string {
-    let valueInputCpf = refInputCpf.current?.value.trim();
-    const cleanedCpf = cpf.replace(/\D/g, "");
+  // function handleValidateCpf() {
+  //   const value = refInputCpf.current?.value.trim();
+  //   const Mensagem_CPF_Inválido = "Por favor, insira um CPF válido";
+  //   let mensagem = "";
 
-    return (valueInputCpf = cleanedCpf.replace(
-      /(\d{3})(\d{3})(\d{3})(\d{2})/,
-      "$1.$2.$3-$4"
-    ));
-  }
+  //   if (!value) {
+  //     mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+  //   } else if (value.length < 11) {
+  //     mensagem = Mensagem_CPF_Inválido;
+  //   }
+  //   setCpfError(mensagem);
+  // }
 
   function handleValidateCpf() {
-    const value = refInputCpf.current?.value.trim();
-    const Mensagem_CPF_Inválido = "Por favor, insira um CPF válido";
     let mensagem = "";
 
-    if (!value) {
+    if (!cpf) {
       mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
-    } else if (value.length < 11) {
-      mensagem = Mensagem_CPF_Inválido;
+    } else if (cpf.length < 11) {
+      mensagem = `Por favor, insira um CPF válido`;
     }
     setCpfError(mensagem);
+  }
+
+  function handleChangeCpf(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    setCpf(value);
+
+    // if (value.length === 4) {
+    //   const formatCpf = (cpf: string): string => {
+    //     return cpf.replace(/(\d{3})/, "$1.");
+    //   };
+    //   setCpf(formatCpf(value));
+    // } else if (value.length === 7) {
+    //   const formatCpf = (cpf: string): string => {
+    //     return cpf.replace(/(\d{3})(\d{3})/, "$1.$2.");
+    //   };
+    //   setCpf(formatCpf(value));
+    // }
+    const formatCpf = (cpf: string): string => {
+      switch (cpf.length) {
+        case 3:
+          return cpf.replace(/(\d{3})/, "$1.");
+        case 7:
+          return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        default:
+          return cpf;
+      }
+    };
+    setCpf(formatCpf(value));
   }
 
   function handleSetColorCpf() {
     const value = refInputCpf.current?.value.trim();
 
+    const formatCpf = (cpf: string): string => {
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    };
+
     if (value && value.length === 11) {
+      setFormattedCpf(formatCpf(value));
       setCpfError("");
       const inputElement = refInputCpf.current;
       inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
@@ -305,6 +341,7 @@ export const CadastroProvider = ({
   return (
     <CadastroContext.Provider
       value={{
+        cpf,
         refFormRegister,
         refInputName,
         refInputCpf,
@@ -317,6 +354,7 @@ export const CadastroProvider = ({
         refInputPhone,
         isNameError,
         isCpfError,
+        formattedCpf,
         isEmailError,
         isPasswordError,
         isGenderError,
@@ -333,6 +371,7 @@ export const CadastroProvider = ({
         handleSetColorName,
         handleValidateCpf,
         handleSetColorCpf,
+        handleChangeCpf,
         handleValidateEmail,
         handleSetColorEmail,
         handleValidatePassword,
