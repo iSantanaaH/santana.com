@@ -6,6 +6,7 @@ import { useCadatroContext } from "@/app/context/cadastro/cadastroContext";
 
 export default function ResgiterPage() {
   const {
+    cpf,
     refFormRegister,
     refInputName,
     refInputCpf,
@@ -18,6 +19,7 @@ export default function ResgiterPage() {
     refInputPhone,
     isNameError,
     isCpfError,
+    formattedCpf,
     isEmailError,
     isPasswordError,
     isGenderError,
@@ -34,7 +36,9 @@ export default function ResgiterPage() {
     handleSetColorName,
     handleValidateCpf,
     handleSetColorCpf,
+    handleChangeCpf,
     handleValidateEmail,
+    handleSetColorEmail,
     handleValidatePassword,
     handleValidateGender,
     handleValidateBirthdate,
@@ -101,8 +105,9 @@ export default function ResgiterPage() {
                 }`}
                 onBlur={handleValidateCpf}
                 onFocus={() => setCpfError("")}
-                onChange={handleSetColorCpf}
+                onChange={handleChangeCpf}
                 ref={refInputCpf}
+                value={cpf}
               />
               <span className={styles.SpanErrorRender}>
                 {isCpfError as string}
@@ -120,7 +125,8 @@ export default function ResgiterPage() {
                   isEmailError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateEmail}
-                onChange={() => setEmailError("")}
+                onFocus={() => setEmailError("")}
+                onChange={handleSetColorEmail}
                 ref={refInputEmail}
               />
               <span className={styles.SpanErrorRender}>
