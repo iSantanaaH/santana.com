@@ -31,7 +31,7 @@ export const CadastroProvider = ({
   const [cpf, setCpf] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [formattedCpf, setFormattedCpf] = useState<string>("");
-  const [formattefPhone, setFormattedPhone] = useState<string>("");
+  const [formattedPhone, setFormattedPhone] = useState<string>("");
   const [isCpfError, setCpfError] = useState<HTMLInputElement | string>("");
   const [isEmailError, setEmailError] = useState<HTMLInputElement | string>("");
   const [isPasswordError, setPasswordError] = useState<
@@ -244,26 +244,41 @@ export const CadastroProvider = ({
   }
 
   function handleValidatePhone() {
-    const value = refInputPhone.current?.value.trim();
     let mensagem = "";
 
-    if (!value) {
+    if (!phone) {
       mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+    } else if (phone.length < 11) {
+      mensagem = `Formato de telefone inválido`;
     }
     setPhoneError(mensagem);
   }
 
-  function handleSetColorPhone() {
-    const value = refInputName.current?.value.trim();
+  function handleChangePhone(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value.replace(/\D/g, "");
+    let formattedPhone = "";
+    setPhoneError("");
 
-    if (value && value.length >= 1) {
-      setNameError("");
-      const inputElement = refInputName.current;
-      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
-    } else if (!value) {
-      const inputElement = refInputName.current;
+    if (value.length <= 2) {
+      formattedPhone = value;
+    } else if (value.length <= 7) {
+      formattedPhone = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+    } else {
+      formattedPhone = `(${value.substring(0, 2)}) ${value.substring(
+        2,
+        7
+      )}-${value.substring(7, 11)}`;
+    }
+    setPhone(formattedPhone);
+
+    if (value.length === 11) {
+      const inputElement = refInputPhone.current;
+      inputElement?.classList.add(styles.InputPhone, styles.AcceptInput);
+    } else if (value.length === 0) {
+      const inputElement = refInputPhone.current;
       inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+      inputElement?.classList.add(styles.ErrorInput);
+      setPhoneError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
   }
 
@@ -335,6 +350,7 @@ export const CadastroProvider = ({
     <CadastroContext.Provider
       value={{
         cpf,
+        phone,
         refFormRegister,
         refInputName,
         refInputCpf,
@@ -371,6 +387,7 @@ export const CadastroProvider = ({
         handleValidateGender,
         handleValidateBirthdate,
         handleValidatePhone,
+        handleChangePhone,
         handleSubmit,
       }}
     >
