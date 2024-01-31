@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, SyntheticEvent } from "react";
 
 export interface CadastroContextProps {
+  cpf: string;
   refFormRegister: React.RefObject<HTMLFormElement>;
   refInputName: React.RefObject<HTMLInputElement>;
   refInputCpf: React.RefObject<HTMLInputElement>;
@@ -18,6 +19,7 @@ export interface CadastroContextProps {
   isGenderError: string | HTMLInputElement;
   isBirthdateError: string | HTMLInputElement;
   isPhoneError: string | HTMLInputElement;
+  formattedCpf: string;
   setNameError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setCpfError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setEmailError: Dispatch<SetStateAction<string | HTMLInputElement>>;
@@ -29,6 +31,7 @@ export interface CadastroContextProps {
   handleSetColorName: () => void;
   handleValidateCpf: () => void;
   handleSetColorCpf: () => void;
+  handleChangeCpf: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidateEmail: () => void;
   handleValidatePassword: () => void;
   handleValidateGender: () => void;
