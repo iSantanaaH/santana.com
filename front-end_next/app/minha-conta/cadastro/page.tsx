@@ -97,7 +97,6 @@ export default function ResgiterPage() {
                 type="text"
                 id="cpf"
                 name="cpf"
-                maxLength={11}
                 required
                 placeholder="___.___.___-__"
                 className={`${styles.InputCPF} ${
