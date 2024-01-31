@@ -29,7 +29,9 @@ export const CadastroProvider = ({
   const refFormRegister = useRef<HTMLFormElement | null>(null);
 
   const [cpf, setCpf] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const [formattedCpf, setFormattedCpf] = useState<string>("");
+  const [formattefPhone, setFormattedPhone] = useState<string>("");
   const [isCpfError, setCpfError] = useState<HTMLInputElement | string>("");
   const [isEmailError, setEmailError] = useState<HTMLInputElement | string>("");
   const [isPasswordError, setPasswordError] = useState<
@@ -70,19 +72,6 @@ export const CadastroProvider = ({
     }
   }
 
-  // function handleValidateCpf() {
-  //   const value = refInputCpf.current?.value.trim();
-  //   const Mensagem_CPF_Inválido = "Por favor, insira um CPF válido";
-  //   let mensagem = "";
-
-  //   if (!value) {
-  //     mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
-  //   } else if (value.length < 11) {
-  //     mensagem = Mensagem_CPF_Inválido;
-  //   }
-  //   setCpfError(mensagem);
-  // }
-
   function handleValidateCpf() {
     let mensagem = "";
 
@@ -95,42 +84,46 @@ export const CadastroProvider = ({
   }
 
   function handleChangeCpf(event: React.ChangeEvent<HTMLInputElement>) {
-    const value = event.target.value;
-    setCpf(value);
+    const value = event.target.value.replace(/\D/g, "");
+    setCpfError("");
 
-    // if (value.length === 4) {
-    //   const formatCpf = (cpf: string): string => {
-    //     return cpf.replace(/(\d{3})/, "$1.");
-    //   };
-    //   setCpf(formatCpf(value));
-    // } else if (value.length === 7) {
-    //   const formatCpf = (cpf: string): string => {
-    //     return cpf.replace(/(\d{3})(\d{3})/, "$1.$2.");
-    //   };
-    //   setCpf(formatCpf(value));
-    // }
-    const formatCpf = (cpf: string): string => {
-      switch (cpf.length) {
-        case 3:
-          return cpf.replace(/(\d{3})/, "$1.");
-        case 7:
-          return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-        default:
-          return cpf;
+    if (value.length <= 11) {
+      let formattedCpf = "";
+
+      if (value.length <= 3) {
+        formattedCpf = value;
+      } else if (value.length <= 6) {
+        formattedCpf = `${value.substring(0, 3)}.${value.substring(3)}`;
+      } else if (value.length <= 9) {
+        formattedCpf = `${value.substring(0, 3)}.${value.substring(
+          3,
+          6
+        )}.${value.substring(6)}`;
+      } else {
+        formattedCpf = `${value.substring(0, 3)}.${value.substring(
+          3,
+          6
+        )}.${value.substring(6, 9)}-${value.substring(9)}`;
       }
-    };
-    setCpf(formatCpf(value));
+
+      setCpf(formattedCpf);
+
+      if (value.length === 11) {
+        const inputElement = refInputCpf.current;
+        inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
+      } else if (value.length === 0) {
+        const inputElement = refInputCpf.current;
+        inputElement?.classList.remove(styles.AcceptInput);
+        inputElement?.classList.add(styles.ErrorInput);
+        setCpfError(MENSAGEM_CAMPO_OBRIGATORIO);
+      }
+    }
   }
 
   function handleSetColorCpf() {
     const value = refInputCpf.current?.value.trim();
 
-    const formatCpf = (cpf: string): string => {
-      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-    };
-
     if (value && value.length === 11) {
-      setFormattedCpf(formatCpf(value));
       setCpfError("");
       const inputElement = refInputCpf.current;
       inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
