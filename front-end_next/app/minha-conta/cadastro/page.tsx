@@ -7,6 +7,7 @@ import { useCadatroContext } from "@/app/context/cadastro/cadastroContext";
 export default function ResgiterPage() {
   const {
     cpf,
+    phone,
     refFormRegister,
     refInputName,
     refInputCpf,
@@ -43,6 +44,7 @@ export default function ResgiterPage() {
     handleValidateGender,
     handleValidateBirthdate,
     handleValidatePhone,
+    handleChangePhone,
     handleSubmit,
   } = useCadatroContext();
 
@@ -233,8 +235,9 @@ export default function ResgiterPage() {
                   isPhoneError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidatePhone}
-                onChange={() => setPhoneError("")}
+                onChange={handleChangePhone}
                 ref={refInputPhone}
+                value={phone}
               />
               <span className={styles.SpanErrorRender}>
                 {isPhoneError as string}
