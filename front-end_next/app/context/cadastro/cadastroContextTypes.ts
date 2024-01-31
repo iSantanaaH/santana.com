@@ -20,7 +20,6 @@ export interface CadastroContextProps {
   isGenderError: string | HTMLInputElement;
   isBirthdateError: string | HTMLInputElement;
   isPhoneError: string | HTMLInputElement;
-  formattedCpf: string;
   setNameError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setCpfError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setEmailError: Dispatch<SetStateAction<string | HTMLInputElement>>;

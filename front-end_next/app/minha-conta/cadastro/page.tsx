@@ -20,7 +20,6 @@ export default function ResgiterPage() {
     refInputPhone,
     isNameError,
     isCpfError,
-    formattedCpf,
     isEmailError,
     isPasswordError,
     isGenderError,

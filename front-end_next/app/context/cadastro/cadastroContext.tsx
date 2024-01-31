@@ -30,8 +30,7 @@ export const CadastroProvider = ({
 
   const [cpf, setCpf] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [formattedCpf, setFormattedCpf] = useState<string>("");
-  const [formattedPhone, setFormattedPhone] = useState<string>("");
+  const [birthdate, setBirthdate] = useState<string>("");
   const [isCpfError, setCpfError] = useState<HTMLInputElement | string>("");
   const [isEmailError, setEmailError] = useState<HTMLInputElement | string>("");
   const [isPasswordError, setPasswordError] = useState<
@@ -363,7 +362,6 @@ export const CadastroProvider = ({
         refInputPhone,
         isNameError,
         isCpfError,
-        formattedCpf,
         isEmailError,
         isPasswordError,
         isGenderError,
