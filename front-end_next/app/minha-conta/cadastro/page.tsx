@@ -209,7 +209,7 @@ export default function ResgiterPage() {
                 name="birthday"
                 required
                 placeholder="__/__/____"
-                className={`${styles.InputBirthday} ${
+                className={`${styles.InputBirthdate} ${
                   isBirthdateError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateBirthdate}
