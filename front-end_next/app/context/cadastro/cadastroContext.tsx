@@ -292,20 +292,30 @@ export const CadastroProvider = ({
   }
 
   function handleValidatePhone() {
-    let mensagem = "";
+    const inputElement = refInputPhone.current;
 
     if (!phone) {
-      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+      setPhoneError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.add(styles.ErrorInput);
     } else if (phone.length < 11) {
-      mensagem = `Formato de telefone inválido`;
+      setPhoneError(`Formato de telefone inválido`);
+      inputElement?.classList.add(styles.ErrorInput);
     }
-    setPhoneError(mensagem);
   }
 
   function handleChangePhone(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/\D/g, "");
+    const inputElement = refInputPhone.current;
+
     let formattedPhone = "";
-    setPhoneError("");
+
+    if (value) {
+      setPhoneError("");
+      inputElement?.classList.remove(styles.ErrorInput);
+    } else if (value.length < 11) {
+      setPhoneError(`Formato de telefone inválido`);
+      inputElement?.classList.add(styles.ErrorInput);
+    }
 
     if (value.length <= 2) {
       formattedPhone = value;
