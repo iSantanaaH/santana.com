@@ -196,7 +196,6 @@ export default function ResgiterPage() {
               <input
                 type="text"
                 id="birthday"
-                name="birthday"
                 required
                 placeholder="__/__/____"
                 className={styles.InputBirthdate}
@@ -215,7 +214,6 @@ export default function ResgiterPage() {
               <input
                 type="text"
                 id="phone"
-                name="phone"
                 required
                 placeholder="(__) _____-____"
                 className={styles.InputPhone}
@@ -229,15 +227,28 @@ export default function ResgiterPage() {
               </span>
             </div>
             <div className={styles.ContainerButton}>
-              <p>
-                Ao criar seu cadastro, você concorda com a nossa{" "}
-                <Link className={styles.LinkPolitic} href={""}>
-                  Política de Privacidade
-                </Link>{" "}
-              </p>
-              <button type="submit">
-                <span>Criar cadastro</span>
-              </button>
+              <div>
+                <button type="submit">
+                  <span>Criar cadastro</span>
+                </button>
+              </div>
+              <div>
+                <p>
+                  Ao criar seu cadastro, você concorda com a nossa{" "}
+                  <Link className={styles.LinkPolitic} href={""}>
+                    <span>política de privacidade</span>
+                  </Link>{" "}
+                </p>
+                <p>
+                  Já tem conta?{" "}
+                  <Link
+                    className={styles.LinkLogin}
+                    href={"/minha-conta/login"}
+                  >
+                    <span>fazer login</span>
+                  </Link>
+                </p>
+              </div>
             </div>
           </form>
         </div>

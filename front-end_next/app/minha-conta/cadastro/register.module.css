@@ -107,13 +107,11 @@
 
 .ContentGender .OptionsGender {
   display: flex;
-  align-items: center;
   grid-row: 1;
 }
 
 .OptionsGender label {
   display: flex;
-  align-items: center;
   gap: 0.3rem;
 }
 
@@ -126,9 +124,10 @@
   height: 1.5rem;
 }
 
-.ContainerButton p {
-  width: 24rem;
-  margin-bottom: 1.5rem;
+.ContainerButton div:nth-child(2) p {
+  margin-top: 0.8rem;
+  flex-direction: column;
+  text-align: center;
 }
 
 .ContainerButton button {
@@ -151,9 +150,11 @@
   letter-spacing: 0.1rem;
 }
 
-.ContainerButton .LinkPolitic {
+.ContainerButton .LinkPolitic,
+.ContainerButton .LinkLogin {
   font-weight: 500;
   cursor: pointer;
+  color: var(--gray400);
 }
 
 .ContainerButton button[type="submit"]:hover {
@@ -176,6 +177,7 @@
 .ContentFormLogin form {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .ContentFormLogin form label {
