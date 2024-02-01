@@ -28,9 +28,12 @@ export const CadastroProvider = ({
   const refInputPhone = useRef<HTMLInputElement | null>(null);
   const refFormRegister = useRef<HTMLFormElement | null>(null);
 
+  const [name, setName] = useState<string>("");
   const [cpf, setCpf] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [birthdate, setBirthdate] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const [isCpfError, setCpfError] = useState<HTMLInputElement | string>("");
   const [isEmailError, setEmailError] = useState<HTMLInputElement | string>("");
   const [isPasswordError, setPasswordError] = useState<
@@ -48,27 +51,26 @@ export const CadastroProvider = ({
   const MENSAGEM_CAMPO_OBRIGATORIO = "Campo obrigatório";
 
   function handleValidateName() {
-    const value = refInputName.current?.value.trim();
-    let mensagem = "";
-
-    if (!value) {
-      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+    if (!name) {
+      setNameError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
-    setNameError(mensagem);
   }
 
-  function handleSetColorName() {
-    const value = refInputName.current?.value.trim();
+  function handleChangeName(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
 
-    if (value && value.length >= 1) {
+    const inputElement = refInputName.current;
+
+    if (value.length > 0) {
       setNameError("");
-      const inputElement = refInputName.current;
+      inputElement?.classList.remove(styles.ErrorInput);
       inputElement?.classList.add(styles.InputName, styles.AcceptInput);
-    } else if (!value) {
-      const inputElement = refInputName.current;
+    } else {
       inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
+      inputElement?.classList.add(styles.ErrorInput);
+      setNameError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
+    setName(value);
   }
 
   function handleValidateCpf() {
@@ -184,20 +186,6 @@ export const CadastroProvider = ({
     setPasswordError(mensagem);
   }
 
-  function handleSetColorSenha() {
-    const value = refInputName.current?.value.trim();
-
-    if (value && value.length >= 1) {
-      setNameError("");
-      const inputElement = refInputName.current;
-      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
-    } else if (!value) {
-      const inputElement = refInputName.current;
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputName, styles.ErrorInput);
-    }
-  }
-
   function handleValidateGender() {
     const valueInputGenderMan = refInputGenderMan.current?.checked;
     const valueInputGenderWoman = refInputGenderWoman.current?.checked;
@@ -304,12 +292,15 @@ export const CadastroProvider = ({
       !isPhoneError
     ) {
       try {
-        const name = refInputName.current?.value.trim();
-        const cpf = refInputCpf.current?.value.trim();
+        // Limpa os campos do formulário
+        setName("");
+        setCpf("");
+        setBirthdate("");
+        setPhone("");
+
         const email = refInputEmail.current?.value.trim();
         const password = refInputPasssword.current?.value.trim();
-        const birthdate = refInputBirthdate.current?.value.trim();
-        const phone = refInputPhone.current?.value.trim();
+
         let gender = "";
 
         if (refInputGenderMan.current?.checked) {
@@ -351,7 +342,10 @@ export const CadastroProvider = ({
   return (
     <CadastroContext.Provider
       value={{
+        name,
         cpf,
+        email,
+        password,
         phone,
         birthdate,
         refFormRegister,
@@ -379,7 +373,7 @@ export const CadastroProvider = ({
         setBirthdateError,
         setPhoneError,
         handleValidateName,
-        handleSetColorName,
+        handleChangeName,
         handleValidateCpf,
         handleSetColorCpf,
         handleChangeCpf,
