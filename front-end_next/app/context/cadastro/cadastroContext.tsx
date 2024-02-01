@@ -248,12 +248,15 @@ export const CadastroProvider = ({
   }
 
   function handleValidateBirthdate() {
-    let mensagem = "";
+    const inputElement = refInputBirthdate.current;
 
     if (!birthdate) {
-      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+      setBirthdateError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.add(styles.ErrorInput);
+    } else if (birthdate.length < 8) {
+      setBirthdateError(`Formato de data inválida`);
+      inputElement?.classList.add(styles.ErrorInput);
     }
-    setBirthdateError(mensagem);
   }
 
   function handleChangeBirthdate(event: React.ChangeEvent<HTMLInputElement>) {
@@ -261,6 +264,12 @@ export const CadastroProvider = ({
     const inputElement = refInputBirthdate.current;
     let formattedBirthdate = "";
     setBirthdateError("");
+    if (value) {
+      inputElement?.classList.remove(styles.ErrorInput);
+    } else if (value.length === 0) {
+      inputElement?.classList.remove(styles.AcceptInput);
+      setBirthdateError(MENSAGEM_CAMPO_OBRIGATORIO);
+    }
 
     if (value.length <= 2) {
       formattedBirthdate = value;
