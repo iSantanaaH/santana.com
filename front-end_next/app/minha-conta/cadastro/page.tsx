@@ -6,7 +6,10 @@ import { useCadatroContext } from "@/app/context/cadastro/cadastroContext";
 
 export default function ResgiterPage() {
   const {
+    name,
     cpf,
+    email,
+    password,
     phone,
     birthdate,
     refFormRegister,
@@ -34,7 +37,7 @@ export default function ResgiterPage() {
     setBirthdateError,
     setPhoneError,
     handleValidateName,
-    handleSetColorName,
+    handleChangeName,
     handleValidateCpf,
     handleChangeCpf,
     handleValidateEmail,
@@ -80,13 +83,11 @@ export default function ResgiterPage() {
                 name="name"
                 required
                 placeholder="Nome"
-                className={`${styles.InputName} ${
-                  isNameError ? styles.ErrorInput : ""
-                }`}
-                onBlur={handleValidateName}
-                onFocus={() => setNameError("")}
-                onChange={handleSetColorName}
+                className={styles.InputName}
+                // onBlur={handleValidateName}
+                onChange={handleChangeName}
                 ref={refInputName}
+                value={name}
               />
               <span className={styles.SpanErrorRender}>
                 {isNameError as string}
@@ -117,7 +118,7 @@ export default function ResgiterPage() {
             <div className={styles.ContainerOptions}>
               <label htmlFor="email">Email</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 required
@@ -149,6 +150,7 @@ export default function ResgiterPage() {
                 onChange={() => setPasswordError("")}
                 onBlur={handleValidatePassword}
               />
+              <span className={styles.SpanInfo}>mínimo 12 caracteres</span>
               <span className={styles.SpanErrorRender}>
                 {isPasswordError as string}
               </span>
@@ -219,7 +221,7 @@ export default function ResgiterPage() {
                 ref={refInputBirthdate}
                 value={birthdate}
               />
-              <span className={styles.SpanInfo}>Formato DD/MM/YYYY</span>
+              <span className={styles.SpanInfo}>formato DD/MM/YYYY</span>
               <span className={styles.SpanErrorRender}>
                 {isBirthdateError as string}
               </span>
