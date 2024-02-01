@@ -312,10 +312,7 @@ export const CadastroProvider = ({
     if (value) {
       setPhoneError("");
       inputElement?.classList.remove(styles.ErrorInput);
-    } else if (value.length < 11) {
-      setPhoneError(`Formato de telefone inválido`);
-      inputElement?.classList.add(styles.ErrorInput);
-    }
+    } 
 
     if (value.length <= 2) {
       formattedPhone = value;
