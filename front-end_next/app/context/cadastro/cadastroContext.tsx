@@ -82,18 +82,20 @@ export const CadastroProvider = ({
   }
 
   function handleValidateCpf() {
-    let mensagem = "";
+    const inputElement = refInputCpf.current;
 
     if (!cpf) {
-      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
+      setCpfError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.add(styles.ErrorInput);
     } else if (cpf.length < 11) {
-      mensagem = `Por favor, insira um CPF válido`;
+      setCpfError(`Por favor, insira um CPF válido`);
+      inputElement?.classList.add(styles.ErrorInput);
     }
-    setCpfError(mensagem);
   }
 
   function handleChangeCpf(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/\D/g, "");
+    const inputElement = refInputCpf.current;
     setCpfError("");
 
     if (value.length <= 11) {
@@ -117,11 +119,12 @@ export const CadastroProvider = ({
 
       setCpf(formattedCpf);
 
+      if (value) {
+        inputElement?.classList.remove(styles.ErrorInput);
+      }
       if (value.length === 11) {
-        const inputElement = refInputCpf.current;
         inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
       } else if (value.length === 0) {
-        const inputElement = refInputCpf.current;
         inputElement?.classList.remove(styles.AcceptInput);
         inputElement?.classList.add(styles.ErrorInput);
         setCpfError(MENSAGEM_CAMPO_OBRIGATORIO);
@@ -144,6 +147,7 @@ export const CadastroProvider = ({
 
         if (regexEmail.test(email)) {
           setEmailError("");
+          inputElement?.classList.add(styles.AcceptInput);
         } else {
           inputElement?.classList.add(styles.ErrorInput);
           setEmailError(Mensagem_Email_Invalido);
@@ -160,6 +164,18 @@ export const CadastroProvider = ({
     if (value) {
       setEmailError("");
       inputElement?.classList.remove(styles.ErrorInput);
+
+      const regexEmail: RegExp =
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
+
+      if (regexEmail.test(email)) {
+        setEmailError("");
+        inputElement?.classList.add(styles.AcceptInput);
+      }
+    } else if (value.length === 0) {
+      setEmailError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.ErrorInput);
     }
   }
 
