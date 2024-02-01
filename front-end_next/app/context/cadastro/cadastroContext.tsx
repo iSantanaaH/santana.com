@@ -49,6 +49,12 @@ export const CadastroProvider = ({
   );
 
   const MENSAGEM_CAMPO_OBRIGATORIO = "Campo obrigatório";
+  const INPUT_ELEMENT_NAME = refInputName.current;
+  const INPUT_ELEMENT_CPF = refInputCpf.current;
+  const INPUT_ELEMENT_EMAIL = refInputEmail.current;
+  const INPUT_ELEMENT_PASSWORD = refInputPasssword.current;
+  const INPUT_ELEMENT_BIRTHDATE = refInputBirthdate.current;
+  const INPUT_ELEMENT_PHONE = refInputPhone.current;
 
   function handleValidateName() {
     const inputElement = refInputName.current;
@@ -123,39 +129,37 @@ export const CadastroProvider = ({
     }
   }
 
-  function handleSetColorCpf() {
-    const value = refInputCpf.current?.value.trim();
-
-    if (value && value.length === 11) {
-      setCpfError("");
-      const inputElement = refInputCpf.current;
-      inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
-    } else if (!value) {
-      const inputElement = refInputCpf.current;
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.InputCPF, styles.ErrorInput);
-    }
-  }
-
   function handleValidateEmail() {
-    const value = refInputEmail.current?.value.trim();
     let Mensagem_Email_Invalido = "Formato de email inválido";
+    const inputElement = refInputEmail.current;
     let mensagem = "";
 
-    if (!value) {
-      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
-      setEmailError(mensagem);
+    if (!email) {
+      setEmailError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.add(styles.ErrorInput);
     } else {
-      if (value) {
+      if (email) {
         const regexEmail: RegExp =
           /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
 
-        if (regexEmail.test(value)) {
+        if (regexEmail.test(email)) {
           setEmailError("");
         } else {
+          inputElement?.classList.add(styles.ErrorInput);
           setEmailError(Mensagem_Email_Invalido);
         }
       }
+    }
+  }
+
+  function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    const inputElement = refInputEmail.current;
+    setEmail(value);
+
+    if (value) {
+      setEmailError("");
+      inputElement?.classList.remove(styles.ErrorInput);
     }
   }
 
@@ -321,14 +325,21 @@ export const CadastroProvider = ({
       !isPhoneError
     ) {
       try {
-        // Limpa os campos do formulário
+        // Limpa os campos do formulário.
         setName("");
         setCpf("");
+        setEmail("");
+        setPassword("");
         setBirthdate("");
         setPhone("");
 
-        const email = refInputEmail.current?.value.trim();
-        const password = refInputPasssword.current?.value.trim();
+        // Remove as classes de inputs aceitos.
+        INPUT_ELEMENT_NAME?.classList.remove(styles.AcceptInput);
+        INPUT_ELEMENT_CPF?.classList.remove(styles.AcceptInput);
+        INPUT_ELEMENT_EMAIL?.classList.remove(styles.AcceptInput);
+        INPUT_ELEMENT_PASSWORD?.classList.remove(styles.AcceptInput);
+        INPUT_ELEMENT_BIRTHDATE?.classList.remove(styles.AcceptInput);
+        INPUT_ELEMENT_PHONE?.classList.remove(styles.AcceptInput);
 
         let gender = "";
 
@@ -404,10 +415,9 @@ export const CadastroProvider = ({
         handleValidateName,
         handleChangeName,
         handleValidateCpf,
-        handleSetColorCpf,
         handleChangeCpf,
         handleValidateEmail,
-        handleSetColorEmail,
+        handleChangeEmail,
         handleValidatePassword,
         handleChangePassword,
         handleValidateGender,
