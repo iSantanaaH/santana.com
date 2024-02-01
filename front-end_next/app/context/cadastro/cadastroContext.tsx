@@ -238,6 +238,7 @@ export const CadastroProvider = ({
 
   function handleChangeBirthdate(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/\D/g, "");
+    const inputElement = refInputBirthdate.current;
     let formattedBirthdate = "";
     setBirthdateError("");
 
@@ -252,6 +253,13 @@ export const CadastroProvider = ({
       )}/${value.substring(4, 8)}`;
     }
     setBirthdate(formattedBirthdate);
+
+    if (value.length === 8) {
+      inputElement?.classList.add(styles.InputBirthdate, styles.AcceptInput);
+    } else if (value.length === 0) {
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.ErrorInput);
+    }
   }
 
   function handleValidatePhone() {
