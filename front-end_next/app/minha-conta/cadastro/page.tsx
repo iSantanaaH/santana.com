@@ -80,11 +80,10 @@ export default function ResgiterPage() {
               <input
                 type="text"
                 id="name"
-                name="name"
                 required
                 placeholder="Nome"
                 className={styles.InputName}
-                // onBlur={handleValidateName}
+                onBlur={handleValidateName}
                 onChange={handleChangeName}
                 ref={refInputName}
                 value={name}

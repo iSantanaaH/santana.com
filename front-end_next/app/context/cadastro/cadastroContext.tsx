@@ -51,14 +51,16 @@ export const CadastroProvider = ({
   const MENSAGEM_CAMPO_OBRIGATORIO = "Campo obrigatório";
 
   function handleValidateName() {
-    if (!name) {
+    const inputElement = refInputName.current;
+
+    if (!name || isNameError) {
       setNameError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleChangeName(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
-
     const inputElement = refInputName.current;
 
     if (value.length > 0) {
