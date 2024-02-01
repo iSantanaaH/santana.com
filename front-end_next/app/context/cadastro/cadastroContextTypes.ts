@@ -34,15 +34,15 @@ export interface CadastroContextProps {
   handleValidateName: () => void;
   handleChangeName: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidateCpf: () => void;
-  handleSetColorCpf: () => void;
   handleChangeCpf: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidateEmail: () => void;
+  handleChangeEmail: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidatePassword: () => void;
+  handleChangePassword: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidateGender: () => void;
   handleValidateBirthdate: () => void;
   handleChangeBirthdate: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidatePhone: () => void;
   handleChangePhone: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSetColorEmail: () => void;
   handleSubmit: (event: SyntheticEvent) => void;
 }

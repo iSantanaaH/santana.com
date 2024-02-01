@@ -41,7 +41,7 @@ export default function ResgiterPage() {
     handleValidateCpf,
     handleChangeCpf,
     handleValidateEmail,
-    handleSetColorEmail,
+    handleChangeEmail,
     handleValidatePassword,
     handleChangePassword,
     handleValidateGender,
@@ -122,12 +122,11 @@ export default function ResgiterPage() {
                 name="email"
                 required
                 placeholder="Digite seu email"
-                className={`${styles.InputEmail} ${
-                  isEmailError ? styles.ErrorInput : ""
-                }`}
+                className={styles.InputEmail}
                 onBlur={handleValidateEmail}
-                onChange={handleSetColorEmail}
+                onChange={handleChangeEmail}
                 ref={refInputEmail}
+                value={email}
               />
               <span className={styles.SpanErrorRender}>
                 {isEmailError as string}
