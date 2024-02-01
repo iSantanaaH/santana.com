@@ -105,7 +105,6 @@ export default function ResgiterPage() {
                   isCpfError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateCpf}
-                onFocus={() => setCpfError("")}
                 onChange={handleChangeCpf}
                 ref={refInputCpf}
                 value={cpf}
@@ -126,7 +125,6 @@ export default function ResgiterPage() {
                   isEmailError ? styles.ErrorInput : ""
                 }`}
                 onBlur={handleValidateEmail}
-                onFocus={() => setEmailError("")}
                 onChange={handleSetColorEmail}
                 ref={refInputEmail}
               />
