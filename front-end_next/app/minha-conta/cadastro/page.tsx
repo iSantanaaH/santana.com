@@ -99,12 +99,9 @@ export default function ResgiterPage() {
               <input
                 type="text"
                 id="cpf"
-                name="cpf"
                 required
                 placeholder="___.___.___-__"
-                className={`${styles.InputCPF} ${
-                  isCpfError ? styles.ErrorInput : ""
-                }`}
+                className={styles.InputCPF}
                 onBlur={handleValidateCpf}
                 onChange={handleChangeCpf}
                 ref={refInputCpf}
@@ -208,9 +205,7 @@ export default function ResgiterPage() {
                 name="birthday"
                 required
                 placeholder="__/__/____"
-                className={`${styles.InputBirthdate} ${
-                  isBirthdateError ? styles.ErrorInput : ""
-                }`}
+                className={styles.InputBirthdate}
                 onBlur={handleValidateBirthdate}
                 onChange={handleChangeBirthdate}
                 ref={refInputBirthdate}
@@ -229,9 +224,7 @@ export default function ResgiterPage() {
                 name="phone"
                 required
                 placeholder="(__) _____-____"
-                className={`${styles.InputPhone} ${
-                  isPhoneError ? styles.ErrorInput : ""
-                }`}
+                className={styles.InputPhone}
                 onBlur={handleValidatePhone}
                 onChange={handleChangePhone}
                 ref={refInputPhone}
