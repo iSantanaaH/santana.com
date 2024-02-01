@@ -176,16 +176,35 @@ export const CadastroProvider = ({
   }
 
   function handleValidatePassword() {
-    const value = refInputPasssword.current?.value.trim();
-    const Mensagem_Senha_Inválida = "A senha deve conter no mínimo 12 dígitos";
-    let mensagem = "";
+    const Mensagem_Senha_Inválida = "A senha deve conter no mínimo 8 dígitos";
+    const inputElement = refInputPasssword.current;
 
-    if (!value) {
-      mensagem = MENSAGEM_CAMPO_OBRIGATORIO;
-    } else if (value.length < 12) {
-      mensagem = Mensagem_Senha_Inválida;
+    if (!password || isPasswordError) {
+      setPasswordError(MENSAGEM_CAMPO_OBRIGATORIO);
+      inputElement?.classList.add(styles.ErrorInput);
+    } else if (password.length < 8) {
+      setPasswordError(Mensagem_Senha_Inválida);
+      inputElement?.classList.add(styles.ErrorInput);
     }
-    setPasswordError(mensagem);
+  }
+
+  function handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    const inputElement = refInputPasssword.current;
+    setPassword(value);
+
+    if (value) {
+      setPasswordError("");
+      inputElement?.classList.remove(styles.ErrorInput);
+    }
+    if (value.length >= 8) {
+      inputElement?.classList.add(styles.InputPassword, styles.AcceptInput);
+      inputElement?.classList.remove(styles.ErrorInput);
+    } else if (value.length === 0) {
+      inputElement?.classList.remove(styles.AcceptInput);
+      inputElement?.classList.add(styles.ErrorInput);
+      setPasswordError(MENSAGEM_CAMPO_OBRIGATORIO);
+    }
   }
 
   function handleValidateGender() {
@@ -382,6 +401,7 @@ export const CadastroProvider = ({
         handleValidateEmail,
         handleSetColorEmail,
         handleValidatePassword,
+        handleChangePassword,
         handleValidateGender,
         handleValidateBirthdate,
         handleChangeBirthdate,

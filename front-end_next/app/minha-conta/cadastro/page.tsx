@@ -43,6 +43,7 @@ export default function ResgiterPage() {
     handleValidateEmail,
     handleSetColorEmail,
     handleValidatePassword,
+    handleChangePassword,
     handleValidateGender,
     handleValidateBirthdate,
     handleChangeBirthdate,
@@ -138,16 +139,14 @@ export default function ResgiterPage() {
                 ref={refInputPasssword}
                 type="password"
                 id="password"
-                name="password"
                 required
                 placeholder="senha"
-                className={`${styles.InputPassword} ${
-                  isPasswordError ? styles.ErrorInput : ""
-                }`}
-                onChange={() => setPasswordError("")}
+                className={styles.InputPassword}
+                onChange={handleChangePassword}
                 onBlur={handleValidatePassword}
+                value={password}
               />
-              <span className={styles.SpanInfo}>mínimo 12 caracteres</span>
+              <span className={styles.SpanInfo}>mínimo 8 caracteres</span>
               <span className={styles.SpanErrorRender}>
                 {isPasswordError as string}
               </span>
