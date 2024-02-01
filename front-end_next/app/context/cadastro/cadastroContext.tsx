@@ -312,7 +312,7 @@ export const CadastroProvider = ({
     if (value) {
       setPhoneError("");
       inputElement?.classList.remove(styles.ErrorInput);
-    } 
+    }
 
     if (value.length <= 2) {
       formattedPhone = value;
@@ -437,13 +437,7 @@ export const CadastroProvider = ({
         isGenderError,
         isBirthdateError,
         isPhoneError,
-        setNameError,
-        setCpfError,
-        setEmailError,
-        setPasswordError,
         setGenderError,
-        setBirthdateError,
-        setPhoneError,
         handleValidateName,
         handleChangeName,
         handleValidateCpf,

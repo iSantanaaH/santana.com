@@ -24,13 +24,7 @@ export interface CadastroContextProps {
   isGenderError: string | HTMLInputElement;
   isBirthdateError: string | HTMLInputElement;
   isPhoneError: string | HTMLInputElement;
-  setNameError: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setCpfError: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setEmailError: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setPasswordError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   setGenderError: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setBirthdateError: Dispatch<SetStateAction<string | HTMLInputElement>>;
-  setPhoneError: Dispatch<SetStateAction<string | HTMLInputElement>>;
   handleValidateName: () => void;
   handleChangeName: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidateCpf: () => void;
