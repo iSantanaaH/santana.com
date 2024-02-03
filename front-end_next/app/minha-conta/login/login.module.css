@@ -42,7 +42,6 @@
 .FormLogin {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 1rem;
   width: 50%;
   margin: 0 auto;
@@ -65,15 +64,15 @@
   width: 15rem;
 }
 
-.ContentFormLogin form .ErrorInput {
+.FormLogin .ErrorInput {
   border: 0.1rem solid var(--redError);
 }
 
-.ContentFormLogin form .AcceptInput {
+.FormLogin .AcceptInput {
   border: 0.1rem solid var(--green400);
 }
 
-.ContentFormLogin form .SpanErrorRender {
+.FormLogin .SpanErrorRender {
   color: var(--redError);
   margin: 0.5rem 0 1rem;
 }
