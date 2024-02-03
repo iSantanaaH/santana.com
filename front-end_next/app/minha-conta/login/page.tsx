@@ -10,6 +10,7 @@ export default function LoginPageUser() {
           <div className={styles.ContentTitle}>
             <article className={styles.ArticleTitle}>
               <h1>Fazer Login</h1>
+              <p>Faça seu login para ter uma experiência personalizada com nossa equipe e acompanhar seus produtos em tempo real.</p>
             </article>
           </div>
           <form className={styles.FormLogin}>
@@ -20,7 +21,6 @@ export default function LoginPageUser() {
                 id="email"
                 name="email"
                 required
-                placeholder="Digite seu email"
                 className={styles.InputEmail}
               />
               <span className={styles.SpanErrorRender}></span>
@@ -31,10 +31,8 @@ export default function LoginPageUser() {
                 type="password"
                 id="password"
                 required
-                placeholder="senha"
                 className={styles.InputPassword}
               />
-              <span className={styles.SpanInfo}>mínimo 8 caracteres</span>
               <span className={styles.SpanErrorRender}></span>
             </div>
             <div className={styles.ContentSubmit}>
@@ -42,7 +40,8 @@ export default function LoginPageUser() {
                 <span>Entrar</span>
               </button>
               <p>
-                Não tem conta? <Link href={"/minha-conta/cadastro"}>
+                Não tem conta?{" "}
+                <Link className={styles.LinkRedirect} href={"/minha-conta/cadastro"}>
                   <span>Cadastre-se</span>
                 </Link>
               </p>
