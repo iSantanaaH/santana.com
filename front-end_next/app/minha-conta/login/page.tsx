@@ -56,8 +56,14 @@ export default function LoginPageUser() {
                 id="password"
                 required
                 className={styles.InputPassword}
+                onChange={handleChangePassword}
+                onBlur={handleValidatePassword}
+                ref={refPassword}
+                value={password}
               />
-              <span className={styles.SpanErrorRender}></span>
+              <span className={styles.SpanErrorRender}>
+                {isPasswordError}
+              </span>
             </div>
             <div className={styles.ContentSubmit}>
               <button type="submit">
