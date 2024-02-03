@@ -57,6 +57,8 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
       if (regexEmail.test(email)) {
         setEmailError("");
         elementEmail?.classList.add(styles.AcceptInput);
+      } else {
+        elementEmail?.classList.remove(styles.AcceptInput);
       }
     } else if (value.length === 0) {
       setEmailError(MENSAGEM_CAMPO_OBRIGATORIO);
