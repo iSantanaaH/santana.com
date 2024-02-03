@@ -1,6 +1,6 @@
 "use client";
 
-import { CadastroProvider } from "../context/cadastro/cadastroContext";
+import { CadastroProvider } from "../context/user/cadastro/cadastroContext";
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
