@@ -179,22 +179,6 @@ export const CadastroProvider = ({
     }
   }
 
-  function handleSetColorEmail() {
-    const value = refInputEmail.current?.value.trim();
-
-    if (value) {
-      const regexEmail: RegExp =
-        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
-
-      if (regexEmail.test(value)) {
-        const inputElement = refInputEmail.current;
-        inputElement?.classList.add(styles.AcceptInput);
-        inputElement?.classList.remove(styles.ErrorInput);
-        setEmailError("");
-      }
-    }
-  }
-
   function handleValidatePassword() {
     const Mensagem_Senha_Inválida = "A senha deve conter no mínimo 8 dígitos";
     const inputElement = refInputPasssword.current;
