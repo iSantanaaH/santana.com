@@ -65,9 +65,40 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  function handleValidatePassword() {}
+  function handleValidatePassword() {
+    const elementPassword = refPassword.current;
 
-  function handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {}
+    if (!password || isPasswordError) {
+      setPasswordError(MENSAGEM_CAMPO_OBRIGATORIO);
+      elementPassword?.classList.add(styles.ErrorInput);
+    } else if (password.length < 8) {
+      elementPassword?.classList.remove(styles.AcceptInput);
+      elementPassword?.classList.add(styles.ErrorInput);
+      setPasswordError(`A senha deve conter no mínimo 8 digitos`);
+    }
+  }
+
+  function handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    const elementPassword = refPassword.current;
+    setPassword(value);
+
+    if (value) {
+      setPasswordError("");
+      elementPassword?.classList.remove(styles.ErrorInput);
+    }
+
+    if (value.length >= 8) {
+      elementPassword?.classList.remove(styles.ErrorInput);
+      elementPassword?.classList.add(styles.AcceptInput);
+    } else if (value.length === 0) {
+      elementPassword?.classList.remove(styles.AcceptInput);
+      elementPassword?.classList.add(styles.ErrorInput);
+      setPasswordError(MENSAGEM_CAMPO_OBRIGATORIO);
+    } else if (value.length < 8) {
+      elementPassword?.classList.remove(styles.AcceptInput);
+    }
+  }
 
   function handleLoginUser(event: SyntheticEvent) {}
 
