@@ -15,10 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 // Importações das Rotas.
 import homeRouter from "./routes/homeRouter";
 import createUserRouter from "./routes/users/createUserRouter";
+import LoginRouter from "./routes/users/LoginRouter";
 
 // Redirecionamento das Rotas.
 app.use("/", homeRouter);
 app.use("/minhaconta/cadastro", createUserRouter);
+app.use("/minhaconta/login", LoginRouter);
 
 // Listen da aplicação.
 app.listen(port, () => {
