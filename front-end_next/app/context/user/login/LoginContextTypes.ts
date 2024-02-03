@@ -5,8 +5,8 @@ export interface LoginContextProps {
   password: string;
   refEmail: React.RefObject<HTMLInputElement>;
   refPassword: React.RefObject<HTMLInputElement>;
-  isEmailError: string | HTMLInputElement;
-  isPasswordError: string | HTMLInputElement;
+  isEmailError: string;
+  isPasswordError: string;
   handleValidateEmail: () => void;
   handleChangeEmail: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleValidatePassword: () => void;
