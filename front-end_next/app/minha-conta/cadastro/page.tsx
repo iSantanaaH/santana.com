@@ -76,7 +76,6 @@ export default function ResgiterPage() {
                 type="text"
                 id="name"
                 required
-                placeholder="Nome"
                 className={styles.InputName}
                 onBlur={handleValidateName}
                 onChange={handleChangeName}
@@ -110,9 +109,7 @@ export default function ResgiterPage() {
               <input
                 type="email"
                 id="email"
-                name="email"
                 required
-                placeholder="Digite seu email"
                 className={styles.InputEmail}
                 onBlur={handleValidateEmail}
                 onChange={handleChangeEmail}
@@ -130,7 +127,6 @@ export default function ResgiterPage() {
                 type="password"
                 id="password"
                 required
-                placeholder="senha"
                 className={styles.InputPassword}
                 onChange={handleChangePassword}
                 onBlur={handleValidatePassword}
@@ -245,7 +241,7 @@ export default function ResgiterPage() {
                     className={styles.LinkLogin}
                     href={"/minha-conta/login"}
                   >
-                    <span>fazer login</span>
+                    <span>Fazer login</span>
                   </Link>
                 </p>
               </div>
