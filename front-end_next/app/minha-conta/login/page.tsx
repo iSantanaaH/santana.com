@@ -1,8 +1,24 @@
+"use client"
 import LayoutUser from "@/app/layouts/user";
 import styles from "./login.module.css";
 import Link from "next/link";
+import { useLoginContext } from "@/app/context/user/login/LoginContext";
 
 export default function LoginPageUser() {
+  const {
+    email,
+    password,
+    refEmail,
+    refPassword,
+    isEmailError,
+    isPasswordError,
+    handleValidateEmail,
+    handleChangeEmail,
+    handleValidatePassword,
+    handleChangePassword,
+    handleLoginUser,
+  } = useLoginContext();
+
   return (
     <>
       <LayoutUser>
@@ -10,7 +26,10 @@ export default function LoginPageUser() {
           <div className={styles.ContentTitle}>
             <article className={styles.ArticleTitle}>
               <h1>Fazer Login</h1>
-              <p>Faça seu login para ter uma experiência personalizada com nossa equipe e acompanhar seus produtos em tempo real.</p>
+              <p>
+                Faça seu login para ter uma experiência personalizada com nossa
+                equipe e acompanhar seus produtos em tempo real.
+              </p>
             </article>
           </div>
           <form className={styles.FormLogin}>
@@ -19,11 +38,16 @@ export default function LoginPageUser() {
               <input
                 type="email"
                 id="email"
-                name="email"
                 required
                 className={styles.InputEmail}
+                onChange={handleChangeEmail}
+                onBlur={handleValidateEmail}
+                ref={refEmail}
+                value={email}
               />
-              <span className={styles.SpanErrorRender}></span>
+              <span className={styles.SpanErrorRender}>
+                {isEmailError}
+              </span>
             </div>
             <div className={styles.ContainerOptions}>
               <label htmlFor="email">Senha</label>
@@ -41,7 +65,10 @@ export default function LoginPageUser() {
               </button>
               <p>
                 Não tem conta?{" "}
-                <Link className={styles.LinkRedirect} href={"/minha-conta/cadastro"}>
+                <Link
+                  className={styles.LinkRedirect}
+                  href={"/minha-conta/cadastro"}
+                >
                   <span>Cadastre-se</span>
                 </Link>
               </p>
