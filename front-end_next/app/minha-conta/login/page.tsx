@@ -32,7 +32,7 @@ export default function LoginPageUser() {
               </p>
             </article>
           </div>
-          <form className={styles.FormLogin}>
+          <form onSubmit={handleLoginUser} method="POST" className={styles.FormLogin}>
             <div className={styles.ContainerOptions}>
               <label htmlFor="email">Email</label>
               <input
