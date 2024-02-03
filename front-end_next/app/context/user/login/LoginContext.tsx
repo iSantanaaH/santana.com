@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { LoginContextProps } from "./LoginContextTypes";
 import styles from "@/app/minha-conta/login/login.module.css";
+import axios from "axios";
 
 export const LoginContext = createContext({} as LoginContextProps);
 
@@ -102,7 +103,39 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  function handleLoginUser(event: SyntheticEvent) {}
+  async function handleLoginUser(event: SyntheticEvent) {
+    event.preventDefault();
+    const elementEmail = refEmail.current;
+    const elementPassword = refPassword.current;
+    handleValidateEmail();
+    handleValidatePassword();
+
+    if (!isEmailError && !isPasswordError) {
+      try {
+        const formData = {
+          email,
+          password,
+        };
+
+        const response = await axios.post(
+          "http://localhost:3333/minhaconta/login",
+          formData
+        );
+
+        if (response.status === 200) {
+          setEmail("");
+          setPassword("");
+          elementEmail?.classList.remove(styles.AcceptInput);
+          elementPassword?.classList.remove(styles.AcceptInput);
+          console.log(`Formulário enviado com sucesso: ${response.data}`);
+        } else {
+          console.log(`Erro na requisição ${response.status}`);
+        }
+      } catch (error: any) {
+        console.error(error.menssage);
+      }
+    }
+  }
 
   return (
     <LoginContext.Provider
