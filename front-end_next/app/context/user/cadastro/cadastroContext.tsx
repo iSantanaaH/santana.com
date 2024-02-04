@@ -53,45 +53,45 @@ export const CadastroProvider = ({
   const INPUT_ELEMENT_PHONE = refInputPhone.current;
 
   function handleValidateName() {
-    const inputElement = refInputName.current;
+    const elementName = refInputName.current;
 
     if (!name || isNameError) {
       setNameError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementName?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleChangeName(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
-    const inputElement = refInputName.current;
+    const elementName = refInputName.current;
 
     if (value.length > 0) {
       setNameError("");
-      inputElement?.classList.remove(styles.ErrorInput);
-      inputElement?.classList.add(styles.InputName, styles.AcceptInput);
+      elementName?.classList.remove(styles.ErrorInput);
+      elementName?.classList.add(styles.InputName, styles.AcceptInput);
     } else {
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementName?.classList.remove(styles.AcceptInput);
+      elementName?.classList.add(styles.ErrorInput);
       setNameError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
     setName(value);
   }
 
   function handleValidateCpf() {
-    const inputElement = refInputCpf.current;
+    const elementCpf = refInputCpf.current;
 
     if (!cpf) {
       setCpfError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementCpf?.classList.add(styles.ErrorInput);
     } else if (cpf.length < 11) {
       setCpfError(`Por favor, insira um CPF válido`);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementCpf?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleChangeCpf(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/\D/g, "");
-    const inputElement = refInputCpf.current;
+    const elementCpf = refInputCpf.current;
     setCpfError("");
 
     if (value.length <= 11) {
@@ -116,26 +116,24 @@ export const CadastroProvider = ({
       setCpf(formattedCpf);
 
       if (value) {
-        inputElement?.classList.remove(styles.ErrorInput);
+        elementCpf?.classList.remove(styles.ErrorInput);
       }
       if (value.length === 11) {
-        inputElement?.classList.add(styles.InputCPF, styles.AcceptInput);
+        elementCpf?.classList.add(styles.InputCPF, styles.AcceptInput);
       } else if (value.length === 0) {
-        inputElement?.classList.remove(styles.AcceptInput);
-        inputElement?.classList.add(styles.ErrorInput);
+        elementCpf?.classList.remove(styles.AcceptInput);
+        elementCpf?.classList.add(styles.ErrorInput);
         setCpfError(MENSAGEM_CAMPO_OBRIGATORIO);
       }
     }
   }
 
   function handleValidateEmail() {
-    let Mensagem_Email_Invalido = "Formato de email inválido";
-    const inputElement = refInputEmail.current;
-    let mensagem = "";
+    const elementEmail = refInputEmail.current;
 
     if (!email) {
       setEmailError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementEmail?.classList.add(styles.ErrorInput);
     } else {
       if (email) {
         const regexEmail: RegExp =
@@ -143,10 +141,10 @@ export const CadastroProvider = ({
 
         if (regexEmail.test(email)) {
           setEmailError("");
-          inputElement?.classList.add(styles.AcceptInput);
+          elementEmail?.classList.add(styles.AcceptInput);
         } else {
-          inputElement?.classList.add(styles.ErrorInput);
-          setEmailError(Mensagem_Email_Invalido);
+          elementEmail?.classList.add(styles.ErrorInput);
+          setEmailError(`Formato de email inválido`);
         }
       }
     }
@@ -154,55 +152,56 @@ export const CadastroProvider = ({
 
   function handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
-    const inputElement = refInputEmail.current;
+    const elementEmail = refInputEmail.current;
     setEmail(value);
 
     if (value) {
       setEmailError("");
-      inputElement?.classList.remove(styles.ErrorInput);
+      elementEmail?.classList.remove(styles.ErrorInput);
 
       const regexEmail: RegExp =
         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$/;
 
       if (regexEmail.test(email)) {
         setEmailError("");
-        inputElement?.classList.add(styles.AcceptInput);
+        elementEmail?.classList.add(styles.AcceptInput);
+      } else {
+        elementEmail?.classList.remove(styles.AcceptInput);
       }
     } else if (value.length === 0) {
       setEmailError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementEmail?.classList.remove(styles.AcceptInput);
+      elementEmail?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleValidatePassword() {
-    const Mensagem_Senha_Inválida = "A senha deve conter no mínimo 8 dígitos";
-    const inputElement = refInputPasssword.current;
+    const elementPassword = refInputPasssword.current;
 
     if (!password || isPasswordError) {
       setPasswordError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementPassword?.classList.add(styles.ErrorInput);
     } else if (password.length < 8) {
-      setPasswordError(Mensagem_Senha_Inválida);
-      inputElement?.classList.add(styles.ErrorInput);
+      setPasswordError(`A senha deve conter no mínimo 8 digitos`);
+      elementPassword?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
-    const inputElement = refInputPasssword.current;
+    const elementPassword = refInputPasssword.current;
     setPassword(value);
 
     if (value) {
       setPasswordError("");
-      inputElement?.classList.remove(styles.ErrorInput);
+      elementPassword?.classList.remove(styles.ErrorInput);
     }
     if (value.length >= 8) {
-      inputElement?.classList.add(styles.InputPassword, styles.AcceptInput);
-      inputElement?.classList.remove(styles.ErrorInput);
+      elementPassword?.classList.add(styles.InputPassword, styles.AcceptInput);
+      elementPassword?.classList.remove(styles.ErrorInput);
     } else if (value.length === 0) {
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementPassword?.classList.remove(styles.AcceptInput);
+      elementPassword?.classList.add(styles.ErrorInput);
       setPasswordError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
   }
@@ -228,26 +227,26 @@ export const CadastroProvider = ({
   }
 
   function handleValidateBirthdate() {
-    const inputElement = refInputBirthdate.current;
+    const elementBirthdate = refInputBirthdate.current;
 
     if (!birthdate) {
       setBirthdateError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementBirthdate?.classList.add(styles.ErrorInput);
     } else if (birthdate.length < 8) {
       setBirthdateError(`Formato de data inválida`);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementBirthdate?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleChangeBirthdate(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/\D/g, "");
-    const inputElement = refInputBirthdate.current;
+    const elementBirthdate = refInputBirthdate.current;
     let formattedBirthdate = "";
     setBirthdateError("");
     if (value) {
-      inputElement?.classList.remove(styles.ErrorInput);
+      elementBirthdate?.classList.remove(styles.ErrorInput);
     } else if (value.length === 0) {
-      inputElement?.classList.remove(styles.AcceptInput);
+      elementBirthdate?.classList.remove(styles.AcceptInput);
       setBirthdateError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
 
@@ -264,34 +263,37 @@ export const CadastroProvider = ({
     setBirthdate(formattedBirthdate);
 
     if (value.length === 8) {
-      inputElement?.classList.add(styles.InputBirthdate, styles.AcceptInput);
+      elementBirthdate?.classList.add(
+        styles.InputBirthdate,
+        styles.AcceptInput
+      );
     } else if (value.length === 0) {
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementBirthdate?.classList.remove(styles.AcceptInput);
+      elementBirthdate?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleValidatePhone() {
-    const inputElement = refInputPhone.current;
+    const elementPhone = refInputPhone.current;
 
     if (!phone) {
       setPhoneError(MENSAGEM_CAMPO_OBRIGATORIO);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementPhone?.classList.add(styles.ErrorInput);
     } else if (phone.length < 11) {
       setPhoneError(`Formato de telefone inválido`);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementPhone?.classList.add(styles.ErrorInput);
     }
   }
 
   function handleChangePhone(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value.replace(/\D/g, "");
-    const inputElement = refInputPhone.current;
+    const elementPhone = refInputPhone.current;
 
     let formattedPhone = "";
 
     if (value) {
       setPhoneError("");
-      inputElement?.classList.remove(styles.ErrorInput);
+      elementPhone?.classList.remove(styles.ErrorInput);
     }
 
     if (value.length <= 2) {
@@ -307,12 +309,11 @@ export const CadastroProvider = ({
     setPhone(formattedPhone);
 
     if (value.length === 11) {
-      const inputElement = refInputPhone.current;
-      inputElement?.classList.add(styles.InputPhone, styles.AcceptInput);
+      elementPhone?.classList.add(styles.InputPhone, styles.AcceptInput);
     } else if (value.length === 0) {
       const inputElement = refInputPhone.current;
-      inputElement?.classList.remove(styles.AcceptInput);
-      inputElement?.classList.add(styles.ErrorInput);
+      elementPhone?.classList.remove(styles.AcceptInput);
+      elementPhone?.classList.add(styles.ErrorInput);
       setPhoneError(MENSAGEM_CAMPO_OBRIGATORIO);
     }
   }
