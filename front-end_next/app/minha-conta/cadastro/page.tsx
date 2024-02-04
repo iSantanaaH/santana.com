@@ -50,8 +50,6 @@ export default function ResgiterPage() {
   return (
     <>
       <LayoutUser>
-       
-
         <div className={styles.MainContainerLoging}>
           <article className={styles.ArticleTitle}>
             <h1>Crie sua conta</h1>
@@ -75,9 +73,7 @@ export default function ResgiterPage() {
                   ref={refInputName}
                   value={name}
                 />
-                <span className={styles.SpanErrorRender}>
-                  {isNameError as string}
-                </span>
+                <span className={styles.SpanErrorRender}>{isNameError}</span>
               </div>
 
               <div className={styles.ContainerOptions}>
@@ -93,9 +89,7 @@ export default function ResgiterPage() {
                   ref={refInputCpf}
                   value={cpf}
                 />
-                <span className={styles.SpanErrorRender}>
-                  {isCpfError as string}
-                </span>
+                <span className={styles.SpanErrorRender}>{isCpfError}</span>
               </div>
               <div className={styles.ContainerOptions}>
                 <label htmlFor="email">Email</label>
@@ -109,9 +103,7 @@ export default function ResgiterPage() {
                   ref={refInputEmail}
                   value={email}
                 />
-                <span className={styles.SpanErrorRender}>
-                  {isEmailError as string}
-                </span>
+                <span className={styles.SpanErrorRender}>{isEmailError}</span>
               </div>
               <div className={styles.ContainerOptions}>
                 <label htmlFor="email">Senha</label>
@@ -127,7 +119,7 @@ export default function ResgiterPage() {
                 />
                 <span className={styles.SpanInfo}>mínimo 8 caracteres</span>
                 <span className={styles.SpanErrorRender}>
-                  {isPasswordError as string}
+                  {isPasswordError}
                 </span>
               </div>
 
@@ -195,7 +187,7 @@ export default function ResgiterPage() {
                 />
                 <span className={styles.SpanInfo}>formato DD/MM/YYYY</span>
                 <span className={styles.SpanErrorRender}>
-                  {isBirthdateError as string}
+                  {isBirthdateError}
                 </span>
               </div>
               <div className={styles.ContainerOptions}>
@@ -211,9 +203,7 @@ export default function ResgiterPage() {
                   ref={refInputPhone}
                   value={phone}
                 />
-                <span className={styles.SpanErrorRender}>
-                  {isPhoneError as string}
-                </span>
+                <span className={styles.SpanErrorRender}>{isPhoneError}</span>
               </div>
               <div className={styles.ContainerButton}>
                 <div>

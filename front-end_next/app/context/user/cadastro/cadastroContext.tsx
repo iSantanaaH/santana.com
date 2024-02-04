@@ -34,17 +34,13 @@ export const CadastroProvider = ({
   const [password, setPassword] = useState<string>("");
   const [birthdate, setBirthdate] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
-  const [isCpfError, setCpfError] = useState<HTMLInputElement | string>("");
-  const [isEmailError, setEmailError] = useState<HTMLInputElement | string>("");
-  const [isPasswordError, setPasswordError] = useState<
-    HTMLInputElement | string
-  >("");
-  const [isBirthdateError, setBirthdateError] = useState<
-    HTMLInputElement | string
-  >("");
-  const [isPhoneError, setPhoneError] = useState<HTMLInputElement | string>("");
-  const [isNameError, setNameError] = useState<HTMLInputElement | string>("");
-  const [isGenderError, setGenderError] = useState<HTMLInputElement | string>(
+  const [isCpfError, setCpfError] = useState<string>("");
+  const [isEmailError, setEmailError] = useState<string>("");
+  const [isPasswordError, setPasswordError] = useState<string>("");
+  const [isBirthdateError, setBirthdateError] = useState<string>("");
+  const [isPhoneError, setPhoneError] = useState<string>("");
+  const [isNameError, setNameError] = useState<string>("");
+  const [isGenderError, setGenderError] = useState<string | HTMLInputElement>(
     ""
   );
 
