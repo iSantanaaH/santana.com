@@ -58,6 +58,17 @@ export const CadastroProvider = ({
     if (!name || isNameError) {
       setNameError(MENSAGEM_CAMPO_OBRIGATORIO);
       elementName?.classList.add(styles.ErrorInput);
+    } else {
+      const nameParts = name.trim().split(" ");
+      if (nameParts.length < 2 || nameParts[1].length === 0) {
+        setNameError("Seu nome precisa ser completo");
+        elementName?.classList.remove(styles.AcceptInput);
+        elementName?.classList.add(styles.ErrorInput);
+      } else {
+        setNameError("");
+        elementName?.classList.add(styles.AcceptInput);
+        elementName?.classList.remove(styles.ErrorInput);
+      }
     }
   }
 
