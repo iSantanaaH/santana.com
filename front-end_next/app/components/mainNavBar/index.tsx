@@ -7,13 +7,18 @@ export default function MainNavBar() {
     <>
       <section className={styles.NavBar}>
         <div>
-          <Image
-            src={"/Images/logo8.svg"}
-            width={50}
-            height={50}
-            alt="Santana.com"
-            title="Santana.com"
-          />
+          <div>
+            <Link href={"/"}>
+              <Image
+                src={"/Images/logo8.svg"}
+                width={50}
+                height={50}
+                alt="Santana.com"
+                title="Santana.com"
+              />
+            </Link>
+          </div>
+
           <input type="search" placeholder="busque aqui seu produto" />
 
           <div>

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./register.module.css";
 import Link from "next/link";
-import { useCadatroContext } from "@/app/context/user/cadastro/cadastroContext";
+import { useCadatroContext } from "@/app/context/user/cadastro/CadastroContext";
 import LayoutUser from "@/app/layouts/user";
 
 export default function ResgiterPage() {
