@@ -322,7 +322,6 @@ export const CadastroProvider = ({
     if (value.length === 11) {
       elementPhone?.classList.add(styles.InputPhone, styles.AcceptInput);
     } else if (value.length === 0) {
-      const inputElement = refInputPhone.current;
       elementPhone?.classList.remove(styles.AcceptInput);
       elementPhone?.classList.add(styles.ErrorInput);
       setPhoneError(MENSAGEM_CAMPO_OBRIGATORIO);
