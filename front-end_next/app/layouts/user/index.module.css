@@ -6,16 +6,45 @@
 }
 
 .ContentImageBackground {
+  display: flex;
+  align-items: center;
   grid-column: 1;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
+  width: 50%;
+  background: var(--blue500);
 }
 
-.Image {
-  width: 50vw;
-  height: 100%;
+.ContentImageBackground div {
+  margin: 0 auto;
+}
+
+.ContentImageBackground h1 {
+  color: var(--whiteFull);
+  font-size: 7rem;
+  font-weight: 300;
+}
+
+.ContentImageBackground h1::after {
+  content: "";
+  display: block;
+  background: var(--blue200);
+  width: 100%;
+  height: 0.5rem;
+  position: relative;
+}
+
+.ContentImageBackground h1::before {
+  position: absolute;
+  content: url("/Images/carrinho.png");
+  top: 0;
+  right: 15rem;
+}
+
+.ContentImageBackground span {
+  color: var(--blue200);
 }
 
 .SectionChildren {

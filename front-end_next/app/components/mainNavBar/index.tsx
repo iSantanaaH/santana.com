@@ -5,24 +5,20 @@ import Link from "next/link";
 export default function MainNavBar() {
   return (
     <>
-      <section className={styles.NavBar}>
-        <div>
-          <div className={styles.SectionLogo}>
+      <section>
+        <nav className={styles.NavBar}>
+          <div className={styles.ContentLogo}>
             <div>
-              <Link href={"/"}>
-                <Image
-                  src={"/Images/logo.svg"}
-                  width={50}
-                  height={50}
-                  alt="Santana.com"
-                  title="Santana.com"
-                />
+              <Link className="LinkDefault" href={"/"}>
+                <h1>
+                  Santana<span>.com</span>
+                </h1>
               </Link>
             </div>
-            <div>
+            <div className={styles.ContainerSearch}>
               <input
                 type="search"
-                placeholder="Buscar marcas, produtos e mais..."
+                placeholder="Busque marcas, produtos e muitomais..."
               />
             </div>
             <div>
@@ -31,34 +27,50 @@ export default function MainNavBar() {
           </div>
           <div className={styles.ContainerLinks}>
             {/* Aqui vai ser a API de CEP pra mostrar o CEP atual da pessoa */}
-            <Link href={"/"}>
+            <Link className={styles.LinksInfo} href={"/"}>
               <span>Categorias</span>
             </Link>
-            <Link href={"/"}>
+            <Link className={styles.LinksInfo} href={"/"}>
               <span>Contato</span>
             </Link>
-            <Link href={"/"}>
+            <Link className={styles.LinksInfo} href={"/"}>
               <span>Moda</span>
             </Link>
-            <Link href={"/"}>
+            <Link className={styles.LinksInfo} href={"/"}>
               <span>Histórico</span>
             </Link>
-            <Link href={"/"}>
+            <Link className={styles.LinksInfo} href={"/"}>
               <span>Ofertas do dia</span>
             </Link>
-            <Link href={"/"}>
+            <Link className={styles.LinksInfo} href={"/"}>
               <span></span>
             </Link>
           </div>
 
-          <div>
-            <Image src={""} width={50} height={50} alt="" />
-            <span>olá, faça seu login ou cadastre-se</span>
-            <Link href={"/minha-conta/cadastro"}>
-              <span>Cadastrar</span>
-            </Link>
+          <div className={styles.ContentUser}>
+            <div>
+              <span>Usuário</span>
+            </div>
+            <div>
+              <Link href={"/"}>
+                <span>Favoritos</span>
+              </Link>
+            </div>
+            <div>
+              <Image src={"/Images/sino.svg"} width={20} height={20} alt="Alerts" />
+            </div>
+            <div>
+              <Link href={"/"}>
+                <span>Carrinho</span>
+              </Link>
+            </div>
+            <div>
+              <Link href={"/"}>
+                <span>Baixe o app</span>
+              </Link>
+            </div>
           </div>
-        </div>
+        </nav>
       </section>
     </>
   );
