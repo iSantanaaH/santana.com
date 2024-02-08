@@ -1,5 +1,6 @@
 :root {
   --mainYellow: #ffff00;
+  --green400: #41f781;
   --whiteFull: #fff;
   --white100: #fffbfb;
   --button500: #1e2f4d;
@@ -8,7 +9,11 @@
   --gray-200: #ccc;
   --gray400: #2c2b2b;
   --redError: #e91515;
-  --green400: #59f04c; 
+  --green400: #59f04c;
+  --black800: #111;
+  --blue500: #004AAD;
+  --blue200: #38B6FF;
+  --test: #E6E6EA;
 }
 
 * {
@@ -19,4 +24,9 @@
 html,
 body {
   min-height: 100vh;
+}
+
+.LinkDefault {
+  text-decoration: none;
+  cursor: pointer;
 }
