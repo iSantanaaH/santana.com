@@ -11,9 +11,9 @@
   --redError: #e91515;
   --green400: #59f04c;
   --black800: #111;
-  --blue500: #004AAD;
-  --blue200: #38B6FF;
-  --test: #E6E6EA;
+  --blue500: #004aad;
+  --blue200: #38b6ff;
+  --test: #e6e6ea;
 }
 
 * {
@@ -28,5 +28,6 @@ body {
 
 .LinkDefault {
   text-decoration: none;
+  color: var(--black800);
   cursor: pointer;
 }
