@@ -31,32 +31,39 @@ export default function MainNavBar() {
             </div>
           </div>
           <div className={styles.ContainerLinks}>
-            {/* Aqui vai ser a API de CEP pra mostrar o CEP atual da pessoa */}
-            <Link className={`${"LinkDefault"} ${styles.Category}`} href={"/"}>
-              <span
-                className={styles.SpanCategories}
-                onMouseEnter={ShowCategories}
-                onMouseLeave={handleHiddenCategories}
+            <div className={styles.DivCategory}>
+              <Link
+                className={`${"LinkDefault"} ${styles.Category}`}
+                href={"/"}
               >
-                Categorias
-              </span>
-            </Link>
-            {isShowCategories && (
-              <div className={styles.ContentDropdownCategories}>
-                <Link href={""} className={`${"LinkDefault"}`}>
-                  <span>Estado verdadeiro</span>
-                </Link>
-                <Link href={""} className={`${"LinkDefault"}`}>
-                  <span>Estado verdadeiro</span>
-                </Link>
-                <Link href={""} className={`${"LinkDefault"}`}>
-                  <span>Estado verdadeiro</span>
-                </Link>
-                <Link href={""} className={`${"LinkDefault"}`}>
-                  <span>Estado verdadeiro</span>
-                </Link>
-              </div>
-            )}
+                <span
+                  className={styles.SpanCategories}
+                  onMouseEnter={ShowCategories}
+                >
+                  Categorias
+                </span>
+              </Link>
+              {isShowCategories && (
+                <div
+                  onMouseLeave={handleHiddenCategories}
+                  className={styles.ContentDropdownCategories}
+                >
+                  <Link href={""} className={`${"LinkDefault"}`}>
+                    <span>Sapato</span>
+                  </Link>
+                  <Link href={""} className={`${"LinkDefault"}`}>
+                    <span>Jaqueta</span>
+                  </Link>
+                  <Link href={""} className={`${"LinkDefault"}`}>
+                    <span>Terno</span>
+                  </Link>
+                  <Link href={""} className={`${"LinkDefault"}`}>
+                    <span>Saia</span>
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <Link className={"LinkDefault"} href={"/"}>
               <span>Moda</span>
             </Link>
