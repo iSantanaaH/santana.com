@@ -82,3 +82,34 @@
   grid-column: 2;
   gap: 1.5rem;
 }
+
+.DivCategory {
+  position: relative;
+}
+
+.ContentDropdownCategories {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  padding: 2rem;
+  background: var(--blue200);
+  top: 2rem;
+  left: 1rem;
+  gap: 0.8rem;
+  border-radius: 0.2rem;
+  width: 10rem;
+}
+
+.ContentDropdownCategories::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0;
+  border-left: 0.8rem solid transparent;
+  border-right: 0.8rem solid transparent;
+  border-bottom: 0.8rem solid var(--blue200);
+  top: -0.7rem;
+  left: 4rem;
+}
