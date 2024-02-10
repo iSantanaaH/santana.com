@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { NavBarContextProps } from "./NavBarContextTypes";
 
 export const NavBarContext = createContext({} as NavBarContextProps);
@@ -28,7 +28,11 @@ export const NavBarProvider = ({ children }: NavBarProviderProps) => {
 
   return (
     <NavBarContext.Provider
-      value={{ isShowCategories, ShowCategories, handleHiddenCategories }}
+      value={{
+        isShowCategories,
+        ShowCategories,
+        handleHiddenCategories,
+      }}
     >
       {children}
     </NavBarContext.Provider>
