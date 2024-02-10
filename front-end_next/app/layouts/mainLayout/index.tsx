@@ -1,4 +1,5 @@
 import MainNavBar from "@/app/components/mainNavBar";
+import styles from "./index.module.css";
 
 interface MainLayoutHomeProps {
   children: React.ReactNode;
@@ -7,7 +8,7 @@ interface MainLayoutHomeProps {
 export default function MainLayoutHome({ children }: MainLayoutHomeProps) {
   return (
     <>
-      <header>
+      <header >
         <MainNavBar />
       </header>
       <main>{children}</main>
