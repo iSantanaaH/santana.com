@@ -1,8 +1,13 @@
+"use client";
 import Image from "next/image";
 import styles from "./index.module.css";
 import Link from "next/link";
+import { useNavBarContext } from "@/app/context/navbar/NavBarContext";
 
 export default function MainNavBar() {
+  const { isShowCategories, ShowCategories, handleHiddenCategories } =
+    useNavBarContext();
+
   return (
     <>
       <section>
@@ -28,8 +33,30 @@ export default function MainNavBar() {
           <div className={styles.ContainerLinks}>
             {/* Aqui vai ser a API de CEP pra mostrar o CEP atual da pessoa */}
             <Link className={`${"LinkDefault"} ${styles.Category}`} href={"/"}>
-              <span>Categorias</span>
+              <span
+                className={styles.SpanCategories}
+                onMouseEnter={ShowCategories}
+                onMouseLeave={handleHiddenCategories}
+              >
+                Categorias
+              </span>
             </Link>
+            {isShowCategories && (
+              <div className={styles.ContentDropdownCategories}>
+                <Link href={""} className={`${"LinkDefault"}`}>
+                  <span>Estado verdadeiro</span>
+                </Link>
+                <Link href={""} className={`${"LinkDefault"}`}>
+                  <span>Estado verdadeiro</span>
+                </Link>
+                <Link href={""} className={`${"LinkDefault"}`}>
+                  <span>Estado verdadeiro</span>
+                </Link>
+                <Link href={""} className={`${"LinkDefault"}`}>
+                  <span>Estado verdadeiro</span>
+                </Link>
+              </div>
+            )}
             <Link className={"LinkDefault"} href={"/"}>
               <span>Moda</span>
             </Link>
