@@ -8,11 +8,11 @@ interface MainLayoutHomeProps {
 export default function MainLayoutHome({ children }: MainLayoutHomeProps) {
   return (
     <>
-      <header >
+      <header className={styles.Header} >
         <MainNavBar />
       </header>
-      <main>{children}</main>
-      <footer></footer>
+      <main className={styles.Main}>{children}</main>
+      <footer className={styles.Footer}></footer>
     </>
   );
 }
