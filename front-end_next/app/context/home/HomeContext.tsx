@@ -1,16 +1,37 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { HomeContextProps } from "./HomeContextTypes";
 
-const HomeContext = createContext({} as HomeContextProps);
+export const HomeContext = createContext({} as HomeContextProps);
 
 interface HomeProviderProps {
   children: React.ReactNode;
 }
 
 export const HomeProvider = ({ children }: HomeProviderProps) => {
-  return <HomeContext.Provider value={{}}>{children}</HomeContext.Provider>;
+  const [showArrowChangeCarrousel, setShowArrowChangeCarrousel] =
+    useState<boolean>(false);
+
+  function handleShowArrowChangeCarrousel() {
+    setShowArrowChangeCarrousel(true);
+  }
+
+  function handleHiddenArrowChangeCarrousel() {
+    setShowArrowChangeCarrousel(false);
+  }
+
+  return (
+    <HomeContext.Provider
+      value={{
+        showArrowChangeCarrousel,
+        handleShowArrowChangeCarrousel,
+        handleHiddenArrowChangeCarrousel,
+      }}
+    >
+      {children}
+    </HomeContext.Provider>
+  );
 };
 
 export const useHomeContext = () => useContext(HomeContext);
