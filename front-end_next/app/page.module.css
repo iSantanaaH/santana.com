@@ -40,7 +40,7 @@
 .Carrousel .LeftCarrousel:hover,
 .Carrousel .RightCarrousel:hover {
   background: rgba(213, 213, 213, 0.2);
-  transition: 0.3s;
+  transition: 0.3s all ease-in-out;
 }
 
 .Carrousel .LeftCarrousel::after {
