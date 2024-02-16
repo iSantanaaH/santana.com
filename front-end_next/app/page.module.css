@@ -1,0 +1,76 @@
+.Carrousel {
+  height: 40rem;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.Carrousel .ImageCarrousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.Carrousel .LeftCarrousel {
+  width: 5rem;
+  height: 5rem;
+  background: rgba(213, 213, 213, 0.1);
+  position: absolute;
+  left: 3.5rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.Carrousel .RightCarrousel {
+  width: 5rem;
+  height: 5rem;
+  background: rgba(213, 213, 213, 0.1);
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.Carrousel .LeftCarrousel:hover,
+.Carrousel .RightCarrousel:hover {
+  background: rgba(213, 213, 213, 0.2);
+  transition: 0.3s;
+}
+
+.Carrousel .LeftCarrousel::after {
+  content: "<";
+  width: 0;
+  height: 0;
+  font-size: 3rem;
+  position: absolute;
+  top: 8%;
+  left: 25%;
+  color: var(--whiteFull);
+}
+
+.Carrousel .RightCarrousel::after {
+  content: ">";
+  width: 0;
+  height: 0;
+  font-size: 3rem;
+  position: absolute;
+  top: 8%;
+  right: 70%;
+  color: var(--whiteFull);
+}
+
+.DivGradient {
+  display: block;
+  background: linear-gradient(to bottom left, #b9b6b6, #bdb1b1);
+  width: 100%;
+  height: 1.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
