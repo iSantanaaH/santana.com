@@ -1,0 +1,34 @@
+.MainContainerFooter {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.PaymentMethods,
+.Security {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 20rem;
+    padding: 0.5rem;
+}
+
+.BorderDivs {
+    width: 0;
+    height: 7rem;
+    border-right: 0.2rem solid var(--gray-200);
+}
+
+.PaymentMethods h3,
+.Security h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--whiteFull);
+}
+
+.PaymentMethods p,
+.Security p {
+    color: var(--whiteFull);
+    /* text-align: justify; */
+}
