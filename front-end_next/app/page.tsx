@@ -34,7 +34,9 @@ export default function HomePage() {
         />
         <div className={styles.DivGradient}></div>
       </section>
-      <section></section>
+      <section>
+        
+      </section>
     </MainLayoutHome>
   );
 }
