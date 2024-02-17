@@ -48,18 +48,27 @@ export default function MainNavBar() {
                   onMouseLeave={handleHiddenCategories}
                   className={styles.ContentDropdownCategories}
                 >
-                  <Link href={""} className={`${"LinkDefault"}`}>
-                    <span>Sapato</span>
-                  </Link>
-                  <Link href={""} className={`${"LinkDefault"}`}>
-                    <span>Jaqueta</span>
-                  </Link>
-                  <Link href={""} className={`${"LinkDefault"}`}>
-                    <span>Terno</span>
-                  </Link>
-                  <Link href={""} className={`${"LinkDefault"}`}>
-                    <span>Saia</span>
-                  </Link>
+                  <div>
+                    <Link href={""} className={`${"LinkDefault"}`}>
+                      <span>Sapato</span>
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Link href={""} className={`${"LinkDefault"}`}>
+                      <span>Jaqueta</span>
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href={""} className={`${"LinkDefault"}`}>
+                      <span>Terno</span>
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href={""} className={`${"LinkDefault"}`}>
+                      <span>Saia</span>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
