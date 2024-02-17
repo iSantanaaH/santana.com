@@ -3,7 +3,7 @@
   --green400: #41f781;
   --whiteFull: #fff;
   --white100: #fffbfb;
-  --button500: #1e2f4d;
+  --blue700: #1e2f4d;
   --button700: #121b31;
   --button600: #243257;
   --gray-200: #ccc;
@@ -11,9 +11,10 @@
   --redError: #e91515;
   --green400: #59f04c;
   --black800: #111;
-  --blue500: #004aad;
+  --blue500: #2600fc;
   --blue200: #38b6ff;
   --test: #e6e6ea;
+  --mainBackground: #607099;
 }
 
 * {
