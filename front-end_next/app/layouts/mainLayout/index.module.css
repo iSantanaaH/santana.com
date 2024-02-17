@@ -1,5 +1,14 @@
 .Main {
-    width: 70%;
+    width: 75%;
     background: burlywood;
     margin: 0 auto;
+}
+
+.Footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    background: var(--blue700);
+    padding: 1rem;
+    height: 20rem;
 }
