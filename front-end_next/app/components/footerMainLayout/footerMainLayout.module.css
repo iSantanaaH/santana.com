@@ -30,5 +30,4 @@
 .PaymentMethods p,
 .Security p {
     color: var(--whiteFull);
-    /* text-align: justify; */
 }
