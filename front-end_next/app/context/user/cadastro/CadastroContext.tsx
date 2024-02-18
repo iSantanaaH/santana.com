@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import axios from "axios";
 import { CadastroContextProps } from "./CadastroContextTypes";
-import styles from "@/app/minha-conta/cadastro/register.module.css";
+import styles from "@/app/minha_conta/cadastro/register.module.css";
 
 export const CadastroContext = createContext({} as CadastroContextProps);
 

@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import { LoginContextProps } from "./LoginContextTypes";
-import styles from "@/app/minha-conta/login/login.module.css";
+import styles from "@/app/minha_conta/login/login.module.css";
 import axios from "axios";
 
 export const LoginContext = createContext({} as LoginContextProps);
