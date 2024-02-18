@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import Link from "next/link";
 import { useNavBarContext } from "@/app/context/navbar/NavBarContext";
+import AccountCircleOutline from "@/public/Images/account_circle_outline.svg";
 
 export default function MainNavBar() {
   const { isShowCategories, ShowCategories, handleHiddenCategories } =
@@ -91,10 +92,30 @@ export default function MainNavBar() {
             </Link>
           </div>
 
-          <div className={styles.ContentUser}>
+          <div className={styles.UserDetails}>
             <div>
-              <span className={styles.UserInfo}>Usuário</span>
+              <Image
+                src={AccountCircleOutline}
+                width={25}
+                height={25}
+                alt=""
+                className={styles.UserInfo}
+              />
+              <p>
+                Faça{" "}
+                <Link className={"LinkDefault"} href={"/minha_conta/login"}>
+                  <span>Login</span>
+                  <br></br>
+                </Link>{" "}
+                ou crie seu{" "}
+                <Link className={"LinkDefault"} href={"/minha_conta/cadastro"}>
+                  <span>Cadastro</span>
+                </Link>
+              </p>
             </div>
+          </div>
+
+          <div className={styles.ContainerInfo}>
             <div>
               <Link className={"LinkDefault"} href={"/"}>
                 <span>Baixe o app</span>
