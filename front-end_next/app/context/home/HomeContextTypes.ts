@@ -4,4 +4,5 @@ export interface HomeContextProps {
   showArrowChangeCarrousel: SetStateAction<boolean | HTMLDivElement>;
   handleShowArrowChangeCarrousel: () => void;
   handleHiddenArrowChangeCarrousel: () => void;
+  images: string[];
 }
