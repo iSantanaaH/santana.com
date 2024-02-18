@@ -91,7 +91,7 @@
   border: none;
   background: linear-gradient(
     to bottom right,
-    var(--button500),
+    var(--blue200),
     var(--button600)
   );
   color: var(--whiteFull);
@@ -99,12 +99,11 @@
 }
 
 .ContentSubmit button:hover {
-  background: linear-gradient(
-    to bottom right,
-    var(--button700),
-    var(--button600)
-  );
+  background: var(--blue200);
+  transition: 0.5s all;
+  color: var(--blue700);
 }
+
 
 .ContentSubmit button span {
   font-size: 1.1rem;

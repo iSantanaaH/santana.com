@@ -73,7 +73,7 @@ export default function LoginPageUser() {
                 Não tem conta?{" "}
                 <Link
                   className={styles.LinkRedirect}
-                  href={"/minha-conta/cadastro"}
+                  href={"/minha_conta/cadastro"}
                 >
                   <span>Cadastre-se</span>
                 </Link>
