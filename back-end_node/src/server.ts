@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Importações das Rotas.
 import homeRouter from "./routes/homeRouter";
-import CreateUserRouter from "./routes/user/createUserRouter";
+import CreateUserRouter from "./routes/user/CreateUserRouter";
 import LoginRouter from "./routes/user/LoginRouter";
 
 // Redirecionamento das Rotas.
