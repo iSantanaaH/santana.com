@@ -2,10 +2,12 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 import express from "express";
 import cors from "cors";
+import { PrismaClient } from "@prisma/client";
 
 // Declarações principais.
 const app = express();
 const port = process.env.PORT;
+const client = new PrismaClient();
 
 // Uses principais da aplicação.
 app.use(express.json());
