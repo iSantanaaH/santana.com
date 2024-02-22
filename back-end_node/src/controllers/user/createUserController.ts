@@ -14,7 +14,7 @@ async function CreateUserController(req: Request, res: Response) {
     birthdate: birthdate.replace(/[^\d]/g, ""),
     phone: phone.replace(/[^\d]/g, ""),
     status: true,
-    permission: "Usuário comum",
+    permission: "usuario comum",
   };
 
   if (!name || !cpf || !email || !password || !gender || !birthdate || !phone) {
@@ -47,10 +47,10 @@ async function CreateUserController(req: Request, res: Response) {
           .status(400)
           .json({ error: "Valor inválido para o campo gênero" });
       }
-      if (formattedData.birthdate !== 8) {
+      if (formattedData.birthdate < 8) {
         return res.status(400).json({ error: "Formato de data inválida" });
       }
-      if (formattedData.phone !== 11) {
+      if (formattedData.phone < 11) {
         return res.status(400).json({ error: "Formato de telefone inválido" });
       }
 
