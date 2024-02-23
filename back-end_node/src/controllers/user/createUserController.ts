@@ -37,7 +37,7 @@ async function CreateUserController(req: Request, res: Response) {
       if (!regexEmail.test(formattedData.email)) {
         return res.status(400).json({ error: "Formato de email inválido" });
       }
-      if (formattedData.cpf.length < 8) {
+      if (formattedData.password.length < 8) {
         return res
           .status(400)
           .json({ error: "A senha deve conter no mínimo 8 dígitos" });
