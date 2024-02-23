@@ -374,22 +374,6 @@ export const CadastroProvider = ({
           gender = "Não informado";
         }
 
-        const cookies = document.cookie.split(";");
-        let token = "";
-
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          if (cookie.startsWith("santana.com.token=")) {
-            token = cookie.substring(
-              "santana.com.token=".length,
-              cookie.length
-            );
-            break;
-          }
-        }
-        const decodedToken = JSON.parse(atob(token?.split(".")[1]));
-        const nameUser = decodedToken.user_name;
-
         const formData = {
           name,
           cpf,
