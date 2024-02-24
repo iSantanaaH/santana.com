@@ -60,6 +60,25 @@
   grid-column: 2;
 }
 
+.UserDetails .RenderWithToken {
+  display: flex;
+  align-items: center;
+}
+
+.UserDetails .RenderWithToken div:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+}
+
+.UserDetails .ContentUser button {
+  border: none;
+  background: none;
+  color: var(--blue200);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .UserDetails div {
   display: flex;
   align-items: center;
