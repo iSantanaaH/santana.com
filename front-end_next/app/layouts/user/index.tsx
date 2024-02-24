@@ -1,5 +1,7 @@
-import styles from "./index.module.css";
+import { ToastContainer } from "react-toastify";
 import Link from "next/link";
+import styles from "./index.module.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface LayoutUserProps {
   children: React.ReactNode;
@@ -17,7 +19,10 @@ export default function LayoutUser({ children }: LayoutUserProps) {
           </Link>
         </div>
       </section>
-      <section className={styles.SectionChildren}>{children}</section>
+      <section className={styles.SectionChildren}>
+        <ToastContainer></ToastContainer>
+        {children}
+      </section>
     </main>
   );
 }
