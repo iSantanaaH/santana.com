@@ -6,8 +6,13 @@ import { useNavBarContext } from "@/app/context/navbar/NavBarContext";
 import AccountCircleOutline from "@/public/Images/account_circle_outline.svg";
 
 export default function MainNavBar() {
-  const { isShowCategories, ShowCategories, handleHiddenCategories } =
-    useNavBarContext();
+  const {
+    isShowCategories,
+    ShowCategories,
+    handleHiddenCategories,
+    token,
+    userName,
+  } = useNavBarContext();
 
   return (
     <>
@@ -24,7 +29,7 @@ export default function MainNavBar() {
             <div className={styles.ContainerSearch}>
               <input
                 type="search"
-                placeholder="Busque marcas, produtos e muitomais..."
+                placeholder="Busque marcas, produtos e muito mais..."
               />
             </div>
             <div>
@@ -93,26 +98,54 @@ export default function MainNavBar() {
           </div>
 
           <div className={styles.UserDetails}>
-            <div>
-              <Image
-                src={AccountCircleOutline}
-                width={25}
-                height={25}
-                alt=""
-                className={styles.UserInfo}
-              />
-              <p>
-                Faça{" "}
-                <Link className={"LinkDefault"} href={"/minha_conta/login"}>
-                  <span>Login</span>
-                  <br></br>
-                </Link>{" "}
-                ou crie seu{" "}
-                <Link className={"LinkDefault"} href={"/minha_conta/cadastro"}>
-                  <span>Cadastro</span>
-                </Link>
-              </p>
-            </div>
+            {token ? (
+              <div className={styles.RenderWithToken}>
+                <div>
+                  <Image
+                    src={AccountCircleOutline}
+                    width={50}
+                    height={50}
+                    alt=""
+                    className={styles.UserInfo}
+                  />
+                </div>
+                <div className={styles.ContentUser}>
+                  <p>
+                    Bem vindo,
+                    <span className={styles.UserName}> {userName}</span>
+                  </p>
+                  <Link href={"/minhaconta/"} className="LinkDefault">
+                    <span>MINHA CONTA</span>
+                  </Link>
+                  <span>|</span>
+                  <button>SAIR</button>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.RenderNoToken}>
+                <Image
+                  src={AccountCircleOutline}
+                  width={50}
+                  height={50}
+                  alt=""
+                  className={styles.UserInfo}
+                />
+                <p>
+                  Faça{" "}
+                  <Link className={"LinkDefault"} href={"/minha_conta/login"}>
+                    <span>Login</span>
+                    <br></br>
+                  </Link>{" "}
+                  ou crie seu{" "}
+                  <Link
+                    className={"LinkDefault"}
+                    href={"/minha_conta/cadastro"}
+                  >
+                    <span>Cadastro</span>
+                  </Link>
+                </p>
+              </div>
+            )}
           </div>
 
           <div className={styles.ContainerInfo}>
