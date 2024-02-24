@@ -2,6 +2,7 @@
   height: 40rem;
   position: relative;
   margin-top: 1rem;
+  z-index: 1;
 }
 
 .Carrousel .ImageCarrousel {
