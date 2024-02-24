@@ -16,10 +16,10 @@ export function isAuthenticated(
   }
 
   const token = authToken.split("");
+  console.log(token);
 
   try {
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decodedToken);
+    
   } catch (error) {
     return res.status(401).end();
   }
