@@ -5,9 +5,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { LoginContextProps } from "./LoginContextTypes";
 import styles from "@/app/minha_conta/login/login.module.css";
 import axios from "axios";
+import Cookies from "js-cookie";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import { LoginContextProps } from "./LoginContextTypes";
+import { toast } from "react-toastify";
 
 export const LoginContext = createContext({} as LoginContextProps);
 
@@ -127,7 +130,17 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
           setPassword("");
           elementEmail?.classList.remove(styles.AcceptInput);
           elementPassword?.classList.remove(styles.AcceptInput);
-          console.log(`Formulário enviado com sucesso: ${response.data}`);
+
+          const token = response.data.token;
+          const decodedToken = jwt.decode(token) as JwtPayload;
+          const user_name = decodedToken.user_name;
+          Cookies.set("santana.com.token", token);
+
+          toast(`Bem vindo ${user_name}`);
+
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 1500)
         } else {
           console.log(`Erro na requisição ${response.status}`);
         }
