@@ -8,6 +8,7 @@ import React, {
 import styles from "@/app/minha_conta/login/login.module.css";
 import axios from "axios";
 import Cookies from "js-cookie";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { LoginContextProps } from "./LoginContextTypes";
 import { toast } from "react-toastify";
 
@@ -131,12 +132,11 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
           elementPassword?.classList.remove(styles.AcceptInput);
 
           const token = response.data.token;
-          const message = response.data.message;
-
+          const decodedToken = jwt.decode(token) as JwtPayload;
+          const userName = decodedToken.userName;
           Cookies.set("santana.com.token", token);
-
-          toast(message);
-
+          
+          toast(`Bem vindo, ${userName}`);
           setTimeout(() => {
             window.location.href = "/";
           }, 1500);
