@@ -15,8 +15,11 @@ export default async function LoginController(req: Request, res: Response) {
       return res.status(400).json({ error: "Email ou senha inválidos" });
     }
 
-    const token = await AuthService.generateToken(authUser.id, authUser.name);
-    console.log(token);
+    const token = await AuthService.generateToken(
+      authUser.id,
+      authUser.name,
+      authUser.role
+    );
     return res.status(200).json({ token: token });
   } catch (error) {
     return res.status(400).end();
