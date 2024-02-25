@@ -17,7 +17,7 @@ CREATE TABLE "user" (
     "street" TEXT,
     "district" TEXT,
     "status" BOOLEAN NOT NULL,
-    "permission" TEXT NOT NULL,
+    "role" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "deleted_at" TIMESTAMP(3),
@@ -58,6 +58,9 @@ CREATE TABLE "country" (
 
     CONSTRAINT "country_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_cpf_key" ON "user"("cpf");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
