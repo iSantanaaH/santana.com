@@ -10,17 +10,21 @@ export async function authUserService(email: string, password: string) {
       },
     });
     return authUser;
-  } catch (error) {}
+  } catch (error: any) {
+    console.error(`Error in search user: ${error.message}`);
+  }
 }
 
-export async function generateToken(userId: number, userName: string) {
+export async function generateToken(
+  userId: number,
+  userName: string,
+  userRole: string
+) {
   try {
     const token = await jwt.sign(
-      { userId: userId, userName: userName },
+      { userId: userId, userName: userName, userRole: userRole },
       process.env.JWT_SECRET as string
     );
-
-    console.log("Generated Token:", token);
 
     return token;
   } catch (error: any) {
