@@ -9,6 +9,7 @@ import React, {
 import axios from "axios";
 import { CadastroContextProps } from "./CadastroContextTypes";
 import styles from "@/app/minha_conta/cadastro/register.module.css";
+import { toast } from "react-toastify";
 
 export const CadastroContext = createContext({} as CadastroContextProps);
 
@@ -348,22 +349,6 @@ export const CadastroProvider = ({
       !isPhoneError
     ) {
       try {
-        // Limpa os campos do formulário.
-        setName("");
-        setCpf("");
-        setEmail("");
-        setPassword("");
-        setBirthdate("");
-        setPhone("");
-
-        // Remove as classes de inputs aceitos.
-        INPUT_ELEMENT_NAME?.classList.remove(styles.AcceptInput);
-        INPUT_ELEMENT_CPF?.classList.remove(styles.AcceptInput);
-        INPUT_ELEMENT_EMAIL?.classList.remove(styles.AcceptInput);
-        INPUT_ELEMENT_PASSWORD?.classList.remove(styles.AcceptInput);
-        INPUT_ELEMENT_BIRTHDATE?.classList.remove(styles.AcceptInput);
-        INPUT_ELEMENT_PHONE?.classList.remove(styles.AcceptInput);
-
         let gender = "";
 
         if (refInputGenderMan.current?.checked) {
@@ -390,14 +375,37 @@ export const CadastroProvider = ({
         );
 
         if (response.status === 200) {
-          console.log("Formulário enviado com sucesso!");
+          // Limpa os campos do formulário.
+          setName("");
+          setCpf("");
+          setEmail("");
+          setPassword("");
+          setBirthdate("");
+          setPhone("");
+
+          // Remove as classes de inputs aceitos.
+          INPUT_ELEMENT_NAME?.classList.remove(styles.AcceptInput);
+          INPUT_ELEMENT_CPF?.classList.remove(styles.AcceptInput);
+          INPUT_ELEMENT_EMAIL?.classList.remove(styles.AcceptInput);
+          INPUT_ELEMENT_PASSWORD?.classList.remove(styles.AcceptInput);
+          INPUT_ELEMENT_BIRTHDATE?.classList.remove(styles.AcceptInput);
+          INPUT_ELEMENT_PHONE?.classList.remove(styles.AcceptInput);
           refFormRegister.current?.reset();
-          console.log(response.data);
-        } else {
-          console.error(`Erro ao enviar o formulário ${response.status}`);
+
+          const message = response.data.message;
+          toast(message);
+
+          setTimeout(() => {
+            window.location.href = "/minha_conta/login";
+          }, 1500);
         }
       } catch (error: any) {
-        console.error(error.message);
+        if (error.response && error.response.status === 400) {
+          if (error.response.data && error.response.data.error) {
+            const errorMessage = error.response.data.error;
+            toast.error(errorMessage);
+          }
+        }
       }
     }
   }
