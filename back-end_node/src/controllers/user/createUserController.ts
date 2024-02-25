@@ -1,9 +1,8 @@
-import { Prisma, PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
+import * as CreateUserService from "../../services/user/CreateUserService";
 
 async function CreateUserController(req: Request, res: Response) {
   const { name, cpf, email, password, gender, birthdate, phone } = req.body;
-  const prisma = new PrismaClient();
 
   const formattedData = {
     name: name,
@@ -14,7 +13,7 @@ async function CreateUserController(req: Request, res: Response) {
     birthdate: birthdate.replace(/[^\d]/g, ""),
     phone: phone.replace(/[^\d]/g, ""),
     status: true,
-    permission: "usuario comum",
+    role: "USER",
   };
 
   if (!name || !cpf || !email || !password || !gender || !birthdate || !phone) {
@@ -47,29 +46,30 @@ async function CreateUserController(req: Request, res: Response) {
           .status(400)
           .json({ error: "Valor inválido para o campo gênero" });
       }
-      if (formattedData.birthdate < 8) {
+      if (formattedData.birthdate.length < 8) {
         return res.status(400).json({ error: "Formato de data inválida" });
       }
       if (formattedData.phone < 11) {
         return res.status(400).json({ error: "Formato de telefone inválido" });
       }
 
-      const existingUser = await prisma.user.findUnique({
-        where: {
-          email: formattedData.email,
-        },
-      });
+      const existingUser = await CreateUserService.existingUserService(
+        formattedData.email,
+        formattedData.cpf
+      );
 
-      if (existingUser) {
-        return res.status(400).json({ error: "Este email já está em uso." });
+      if (existingUser.existingUserByEmail) {
+        return res.status(400).json({ error: `Este email já está em uso` });
+      }
+      if (existingUser.existingUserByCpf) {
+        return res.status(400).json({ error: `Este CPF já está em uso` });
       }
 
-      const newUser = await prisma.user.create({
-        data: formattedData,
-      });
+      const newUser = await CreateUserService.createUserService(formattedData);
+
       return res
         .status(200)
-        .json({ message: "Usuário criado com sucesso", user: newUser });
+        .json({ message: "Usuário criado com sucesso" });
     } catch (error: any) {
       console.error("Erro ao criar o usuário", error.message);
       return res.status(400).json({ error: "Erro interno do servidor" });
