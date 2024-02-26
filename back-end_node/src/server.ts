@@ -1,5 +1,5 @@
 // Importações principais.
-require("dotenv").config({ path: __dirname + "/.env" });
+require("dotenv").config();
 import express from "express";
 import cors from "cors";
 
@@ -17,8 +17,8 @@ import CreateUserRouter from "./routes/user/CreateUserRouter";
 import LoginRouter from "./routes/user/LoginRouter";
 
 // Redirecionamento das Rotas.
-app.use("/minhaconta/cadastro", CreateUserRouter);
-app.use("/minhaconta/login", LoginRouter);
+app.use("/cadastro", CreateUserRouter);
+app.use("/login", LoginRouter);
 
 // Listen da aplicação.
 app.listen(port, () => {
