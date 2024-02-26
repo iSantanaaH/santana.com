@@ -17,12 +17,10 @@ export async function authUserService(email: string, password: string) {
 
 export async function generateToken(
   userId: number,
-  userName: string,
-  userRole: string
 ) {
   try {
     const token = await jwt.sign(
-      { userId: userId, userName: userName, userRole: userRole },
+      { userId: userId },
       process.env.JWT_SECRET as string
     );
 

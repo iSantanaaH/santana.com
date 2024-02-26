@@ -17,8 +17,6 @@ export default async function LoginController(req: Request, res: Response) {
 
     const token = await AuthService.generateToken(
       authUser.id,
-      authUser.name,
-      authUser.role
     );
     return res.status(200).json({ token: token });
   } catch (error) {
