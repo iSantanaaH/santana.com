@@ -21,7 +21,8 @@ export async function generateToken(
   try {
     const token = await jwt.sign(
       { userId: userId },
-      process.env.JWT_SECRET as string
+      process.env.JWT_SECRET as string,
+      { expiresIn: "1h" }
     );
 
     return token;
