@@ -121,7 +121,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
         };
 
         const response = await axios.post(
-          "http://localhost:3333/minhaconta/login",
+          "http://localhost:3333/login",
           formData
         );
 
