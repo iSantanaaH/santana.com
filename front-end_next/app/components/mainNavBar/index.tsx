@@ -132,14 +132,14 @@ export default function MainNavBar() {
                 />
                 <p>
                   Faça{" "}
-                  <Link className={"LinkDefault"} href={"/minha_conta/login"}>
+                  <Link className={"LinkDefault"} href={"/login"}>
                     <span>Login</span>
                     <br></br>
                   </Link>{" "}
                   ou crie seu{" "}
                   <Link
                     className={"LinkDefault"}
-                    href={"/minha_conta/cadastro"}
+                    href={"/cadastro"}
                   >
                     <span>Cadastro</span>
                   </Link>

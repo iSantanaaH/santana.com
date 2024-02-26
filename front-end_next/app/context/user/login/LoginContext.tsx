@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import styles from "@/app/minha_conta/login/login.module.css";
+import styles from "@/app/login/login.module.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import jwt, { JwtPayload } from "jsonwebtoken";
