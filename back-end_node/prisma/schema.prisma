@@ -20,11 +20,11 @@ model User {
   birthdate    String
   phone        String
   photo        String?
-  number_house String?
+  number_house Int?
   city_id      String?
   state_id     String?
   country_id   String?
-  zip_code     String?
+  zip_code     Int?
   street       String?
   district     String?
   status       Boolean
