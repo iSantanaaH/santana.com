@@ -114,7 +114,7 @@ export default function MainNavBar() {
                     Bem vindo,
                     <span className={styles.UserName}> {userName}</span>
                   </p>
-                  <Link href={"/minhaconta/"} className="LinkDefault">
+                  <Link href={"/minha_conta/perfil"} className="LinkDefault">
                     <span>MINHA CONTA</span>
                   </Link>
                   <span>|</span>

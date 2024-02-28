@@ -221,7 +221,7 @@ export default function ResgiterPage() {
                     Já tem conta?{" "}
                     <Link
                       className={styles.LinkLogin}
-                      href={"/minha_conta/login"}
+                      href={"/login"}
                     >
                       <span>Fazer login</span>
                     </Link>

@@ -370,7 +370,7 @@ export const CadastroProvider = ({
         };
 
         const response = await axios.post(
-          "http://localhost:3333/minhaconta/cadastro",
+          "http://localhost:3333/cadastro",
           formData
         );
 
@@ -396,7 +396,7 @@ export const CadastroProvider = ({
           toast(message);
 
           setTimeout(() => {
-            window.location.href = "/minha_conta/login";
+            window.location.href = "/login";
           }, 1500);
         }
       } catch (error: any) {
