@@ -1,0 +1,22 @@
+.MainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 11rem;
+}
+
+.Footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    background: var(--blue700);
+    padding: 1rem;
+    height: 20rem;
+}
+
+.Main {
+    width: calc(100% - 5rem);
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    background: blue;
+}
