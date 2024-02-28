@@ -8,14 +8,20 @@ interface MainLayoutHomeProps {
 
 export default function MainLayoutHome({ children }: MainLayoutHomeProps) {
   return (
-    <>
-      <header className={styles.Header} >
-        <MainNavBar />
-      </header>
-      <main className={styles.Main}>{children}</main>
-      <footer className={styles.Footer}>
-        <FooterMainLayout />
-      </footer>
-    </>
+    <section className={styles.MainContainer}>
+      <div>
+        <header className={styles.Header}>
+          <MainNavBar />
+        </header>
+      </div>
+      <div>
+        <main className={styles.Main}>{children}</main>
+      </div>
+      <div className={styles.Test}>
+        <footer className={styles.Footer}>
+          <FooterMainLayout />
+        </footer>
+      </div>
+    </section>
   );
 }
