@@ -122,7 +122,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
 
         const response = await axios.post(
           "http://localhost:3333/login",
-          formData
+          formData,
         );
 
         if (response.status === 200) {
@@ -135,7 +135,7 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
           const decodedToken = jwt.decode(token) as JwtPayload;
           const userName = decodedToken.userName;
           Cookies.set("santana.com.token", token);
-          
+
           toast(`Bem vindo, ${userName}`);
           setTimeout(() => {
             window.location.href = "/";
@@ -144,7 +144,11 @@ export const LoginProvider = ({ children }: { children: React.ReactNode }) => {
           console.log(`Erro na requisição ${response.status}`);
         }
       } catch (error: any) {
-        console.error(error.menssage);
+        if (error.response && error.response.status === 400) {
+          if (error.response.data && error.response.data.error) {
+            toast.error(error.response.data.error);
+          }
+        }
       }
     }
   }
