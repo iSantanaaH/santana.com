@@ -15,12 +15,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  
+
   return (
     <html suppressHydrationWarning lang="pt-BR">
       <link rel="icon" href="/Images/logo.svg" />
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body className={inter.className}>
+
+        
         <Providers>
           <main>{children}</main>
         </Providers>
