@@ -79,21 +79,18 @@ export default function MainNavBar() {
               )}
             </div>
 
-            <Link className={"LinkDefault"} href={"/"}>
+            <Link className={"LinkDefault"} href={"/moda"}>
               <span>Moda</span>
             </Link>
 
-            <Link className={"LinkDefault"} href={"/"}>
+            <Link className={"LinkDefault"} href={"/ofertas_do_dia"}>
               <span>Ofertas do dia</span>
             </Link>
-            <Link className={"LinkDefault"} href={"/"}>
+            <Link className={"LinkDefault"} href={"/minha_conta/historico"}>
               <span>Histórico</span>
             </Link>
-            <Link className={"LinkDefault"} href={"/"}>
+            <Link className={"LinkDefault"} href={"/contato"}>
               <span>Contato</span>
-            </Link>
-            <Link className={"LinkDefault"} href={"/"}>
-              <span></span>
             </Link>
           </div>
 
@@ -137,10 +134,7 @@ export default function MainNavBar() {
                     <br></br>
                   </Link>{" "}
                   ou crie seu{" "}
-                  <Link
-                    className={"LinkDefault"}
-                    href={"/cadastro"}
-                  >
+                  <Link className={"LinkDefault"} href={"/cadastro"}>
                     <span>Cadastro</span>
                   </Link>
                 </p>
@@ -150,12 +144,12 @@ export default function MainNavBar() {
 
           <div className={styles.ContainerInfo}>
             <div>
-              <Link className={"LinkDefault"} href={"/"}>
+              <Link className={"LinkDefault"} href={"/santana/app"}>
                 <span>Baixe o app</span>
               </Link>
             </div>
             <div>
-              <Link className={"LinkDefault"} href={"/"}>
+              <Link className={"LinkDefault"} href={"/minha_conta/favoritos"}>
                 <span className={styles.Favorites}>Favoritos</span>
               </Link>
             </div>
