@@ -1,0 +1,37 @@
+.Header {
+  display: flex;
+  padding: 0.5rem;
+  background: var(--blue700);
+}
+
+.SectionRedirect div h1,
+.SectionRedirect div p,
+.SectionRedirect div button {
+  color: var(--whiteFull);
+}
+
+.SectionRedirect {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  align-items: center;
+  margin: 0.8rem;
+}
+
+.LogoSantana {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  grid-column: 1;
+}
+
+.ButtonApp {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  grid-column: 2;
+}
+
+.SectionRedirect div h1 {
+  font-weight: 600;
+}
