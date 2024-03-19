@@ -1,22 +1,7 @@
-.Header {
-  display: flex;
-  padding: 0.5rem;
-  background: var(--blue700);
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
-}
-
 .SectionRedirect div h1,
 .SectionRedirect div p,
 .SectionRedirect div button {
   color: var(--whiteFull);
-}
-
-.SectionRedirect {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 100%;
-  align-items: center;
-  margin: 0.8rem;
 }
 
 .LogoSantana {
@@ -38,29 +23,113 @@
   font-weight: 500;
 }
 
-.ButtonApp {
-  display: flex;
-  align-items: center;
-  justify-self: center;
-  grid-column: 2;
-  gap: 0.4rem;
-}
-
-.ButtonApp button {
-  padding: 0.5rem;
-  background: var(--blue500);
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.3s;
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
-}
-
 .ButtonApp button:hover {
   background: var(--blue200);
 }
 
 .SectionRedirect div h1 {
   font-weight: 600;
+}
+
+/* 767 mobile, 768~1023 tablet,
+1024~1439 laptop */
+
+@media only screen and (min-width: 767px) {
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+}
+
+@media only screen and (min-width: 1440px) {
+  .Header {
+    display: flex;
+    padding: 0.5rem;
+    background: var(--blue700);
+    width: 100%;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
+  }
+
+  .Main {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .SectionRedirect {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    align-items: center;
+    margin: 0.8rem;
+  }
+
+  .SectionGuide {
+    width: 100%;
+  }
+
+  .Guide h1,
+  .AboutSantanaApp h2 {
+    font-size: 2rem;
+    color: var(--whiteFull);
+  }
+
+  .Guide {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 56rem;
+    background: var(--button700);
+  }
+
+  .VideoGuide {
+    width: 60rem;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
+  }
+
+  .ButtonApp {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    grid-column: 2;
+    gap: 0.4rem;
+  }
+
+  .ButtonApp button {
+    padding: 0.5rem;
+    background: var(--blue500);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
+  }
+
+  .AboutSantanaApp {
+    height: 56rem;
+    background: var(--button600);
+  }
+
+  .AboutSantanaApp .Title {
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+  }
+
+  .InfoAppForUser {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+
+  .InfoAppForUser div {
+    width: 20rem;
+    height: 23rem;
+    background: var(--whiteFull);
+    margin-top: 5rem;
+    border-radius: 1rem;
+  }
 }
