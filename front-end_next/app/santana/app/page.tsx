@@ -12,8 +12,8 @@ export default function SantanaApp() {
               Santana
               <span className={styles.Domain}>.com</span>
             </h1>
-            <Link href={"/"}>
-              <Image src={""} width={50} height={50} alt="" />
+            <Link className={"LinkDefault"} href={"/"}>
+              <Image className={styles.LogoHeader} src={"/Images/carrinho.png"} width={50} height={50} alt="" />
             </Link>
           </div>
           <div className={styles.ButtonApp}>
