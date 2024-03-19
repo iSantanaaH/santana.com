@@ -1,6 +1,8 @@
 .SectionRedirect div h1,
 .SectionRedirect div p,
-.SectionRedirect div button {
+.SectionRedirect div button,
+.InfoAppForUser div p,
+.InfoAppForUser div h3 {
   color: var(--whiteFull);
 }
 
@@ -54,7 +56,7 @@
 
   .Main {
     width: 100%;
-    height: 100vh;
+    height: 100%;
   }
 
   .SectionRedirect {
@@ -83,9 +85,17 @@
     background: var(--button700);
   }
 
+  .DivBorder {
+    width: 0.4rem;
+    height: 20rem;
+    border-radius: 0.5rem;
+    background: var(--whiteFull);
+  }
+
   .VideoGuide {
     width: 60rem;
     filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
+    border-radius: 0.5rem;
   }
 
   .ButtonApp {
@@ -120,16 +130,48 @@
 
   .InfoAppForUser {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 2.5rem;
   }
 
   .InfoAppForUser div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    gap: 1rem;
+  }
+
+  .InfoAppForUser article {
+    display: flex;
+    align-items: center;
     width: 20rem;
     height: 23rem;
-    background: var(--whiteFull);
-    margin-top: 5rem;
+    background: var(--blackFull);
     border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  .InfoAppForUser .ImageArticle {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .InfoAppForUser div p {
+    width: 20rem;
+    text-align: center;
+  }
+
+  .Footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--button700);
+  }
+
+  .Footer .DirectsReserved p {
+    color: var(--whiteFull);
   }
 }
