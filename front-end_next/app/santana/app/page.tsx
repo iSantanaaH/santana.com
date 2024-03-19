@@ -25,14 +25,30 @@ export default function SantanaApp() {
         </section>
       </header>
       <main className={styles.Main}>
-        <section>
-          <div>
+        <section className={styles.SectionGuide}>
+          <div className={styles.Guide}>
             <h1>
-              Guia para instalação do APP
+              Confira nosso Guia para<br></br>instalação do APP ao lado.
             </h1>
+            <video
+              className={styles.VideoGuide}
+              src="/Videos/teste.mp4"
+            ></video>
           </div>
-          <div>
-            <video className={styles.VideoGuide} src=""></video>
+        </section>
+        <section className={styles.AboutSantanaApp}>
+          <div className={styles.Title}>
+            <h2>Quais as vantagens de ter o nosso APP?</h2>
+          </div>
+          <div className={styles.InfoAppForUser}>
+            <h3>Acompanhe seus produtos em tempo real</h3>
+            <div></div>
+            <h3>Avisaremos quando houver alguma promoção</h3>
+            <div></div>
+            <h3>Concorra a cupons de descontos em compras</h3>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </section>
       </main>
