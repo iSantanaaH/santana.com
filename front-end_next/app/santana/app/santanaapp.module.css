@@ -14,6 +14,11 @@
   gap: 0.4rem;
 }
 
+.LogoSantana .LogoHeader {
+  width: 100%;
+  height: auto;
+}
+
 .LogoSantana .Name {
   color: var(--blue500);
   font-size: 1.7rem;
@@ -48,7 +53,7 @@
 @media only screen and (min-width: 1440px) {
   .Header {
     display: flex;
-    padding: 0.5rem;
+    padding: 0.3rem;
     background: var(--blue700);
     width: 100%;
     filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--black800));
